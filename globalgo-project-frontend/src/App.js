@@ -10,7 +10,7 @@ import MobileLanding from './components/MobileLanding';
 import ProjectBrowser from './components/ProjectBrowser';
 import DonationPage from './components/DonationPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 
 
 const initialState = {
@@ -35,9 +35,8 @@ class App extends Component {
     this.getThemes()
   }
 
-
   getThemeFromId = themeId => {
-    let theme = this.state.themes.find(theme=>theme.id===themeId)
+    let theme = this.state.themes.find(theme => theme.id === themeId)
     return theme
   }
   
@@ -46,7 +45,7 @@ class App extends Component {
     fetch(url)
     .then(res=>res.json())
     .then(json => {
-      if (json.length != 0) {
+      if (json.length !== 0) {
         this.setState({themes: json})
         // this.setState({themes: json}, this.fetchUserThemes())
       }

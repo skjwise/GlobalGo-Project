@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
+import Footer from './Footer';
+import { withRouter } from 'react-router-dom'
+
 
 export class LoginForm extends Component {
 
-    // state
-    
+    constructor() {
+        super();
+        
+    }
     // componentDidMount
+
     // getToken
+
     // resize
+
     // getProfile
+
     // saveToken
+
     // saveUserInfo
+
     // login - POST
     
 
@@ -27,4 +38,4 @@ export class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

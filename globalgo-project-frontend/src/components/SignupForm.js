@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import { Dropdown, Button, Form, Grid, Header, Checkbox, List, Icon } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import Footer from './Footer'
-// import config from 'react-global-configuration';
+import config from 'react-global-configuration';
 
 
 export class SignupForm extends Component {
