@@ -26,6 +26,8 @@ const initialState = {
 const API_URL = 'http://localhost:3000';
 // const USERS_URL = `${API_URL}/users`;
 // const COUNTRY_URL = `${API_URL}/countries`;
+// const PROFILE_URL = `${API_URL}/profile`;
+// const THEMES_URL = `${API_URL}/themes`
 
 class App extends Component {
 
@@ -86,12 +88,12 @@ class App extends Component {
     }
   
   
-    updateAppThemes = (themes) => {
+    updateAppThemes = themes => {
       this.setState({userThemes: themes})
   
     }
   
-    updateSelectedCountry = (country) => {
+    updateSelectedCountry = country => {
       if(country){
         this.setState({
           updatedSelectedCountry: true,
@@ -100,7 +102,7 @@ class App extends Component {
       }
     }
   
-    handleDonate = (project) => {
+    handleDonate = project => {
       this.setState({selectedProject: project})
       localStorage.removeItem('selectedProject')
       localStorage.setItem('selectedProject', JSON.stringify(project))
@@ -121,8 +123,8 @@ class App extends Component {
       this.setState(initialState)
     }
   
-    setUser = (user) => {
-      console.log('in set user')
+    setUser = user => {
+      console.log('set user')
       this.setState({user: user, selectedCountry: user.default_country})
     }
   
