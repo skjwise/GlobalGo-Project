@@ -48,12 +48,60 @@ export class LoginForm extends Component {
         localStorage.setItem('jwt', token)
     }
 
-    // saveUserInfo
+    saveUserInfo = json => {
+        localStorage.setItem('userid', json["user"]["id"])
+        localStorage.setItem('username', json["user"]["username"])
+        localStorage.setItem('email', json["user"]["email"])
+        localStorage.setItem('first_name', json["user"]["first_name"])
+        localStorage.setItem('last_name', json["user"]["last_name"])
+        localStorage.setItem('default_country', json["user"]["default_country"])
+    }
 
-    // login - POST
+
+
+    login = e => {
+    e.preventDefault()
+    const username = this.username.current.value
+    const password = this.password.current.value
+    if(!username) {
+        alert("Please Enter your Username!")
+        return
+    }
+    const URL = `${this.props.API_URL}/login`
+    const headers = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user: {username, password}})
+    }
+    fetch(URL, headers)
+        .then(res=>res.json())
+        .then(json => {
+            if (json && json.jwt) {
+            this.saveToken(json.jwt)
+            this.saveUserInfo(json)
+            this.getProfile()
+            this.setState(prevState => ({
+                loggedIn: true
+            }), ()=> {
+                this.props.setUser(json.user);
+                this.props.updateSelectedCountry(json.user.default_country);
+                this.props.getThemes()
+                this.props.fetchUserThemes()
+            });
+            // push to mobile_landing on small screen
+                if (this.state.mobile) {
+                this.props.history.push("/mobile_landing")
+                } else {
+                this.props.history.push("/map")
+                }
+            }else{
+            alert("Incorrect Login Information")
+            }
+        })
+        }
     
-
-
     render() {
         return (
             <div className='body'>

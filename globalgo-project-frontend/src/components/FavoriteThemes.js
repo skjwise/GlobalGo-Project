@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-export class ProjectBrowser extends Component {
+export class FavoriteThemes extends Component {
     render() {
         return (
             <div>
-                <h2>Project Browser</h2>
+                <h2>Users Favorite Themes</h2>
             </div>
         );
     }
 }
 
-export default ProjectBrowser;
+export default FavoriteThemes;

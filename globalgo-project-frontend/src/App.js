@@ -209,7 +209,7 @@ class App extends Component {
             {(this.state.selectedProject)
             ? <Route
               path={'/donate'}
-              render={()=><DonationPage
+              render={() => <DonationPage
                 project={this.state.selectedProject}
                 logout={this.logout}
                 />}
