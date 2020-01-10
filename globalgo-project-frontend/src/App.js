@@ -28,6 +28,7 @@ const API_URL = 'http://localhost:3000';
 // const COUNTRY_URL = `${API_URL}/countries`;
 // const PROFILE_URL = `${API_URL}/profile`;
 // const THEMES_URL = `${API_URL}/themes`
+// const PROJECTS_URL = `${API_URL}/projects`;
 
 class App extends Component {
 

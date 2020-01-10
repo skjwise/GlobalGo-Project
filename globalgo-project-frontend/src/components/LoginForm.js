@@ -118,16 +118,16 @@ export class LoginForm extends Component {
                             </Header>
                             <Form onSubmit={this.login}>
                                 <Form.Field className='login-field' onChange={this.handleChange}>
-                                    <label>Username</label>
+                                    <label>Username: </label>
                                     <input name='username' type='text' placeholder='Username' ref={this.username} required />
                                 </Form.Field>
                                 <Form.Field className='login-field' onChange={this.handleChange} >
-                                    <label>Password</label>
+                                    <label>Password: </label>
                                     <input id='loginpassword' name='password' type='password' placeholder='Password' ref={this.password} required />
                                 </Form.Field>
                                 <Form.Field className='login-buttons'>
                                     <input type='submit' className="large ui blue button" value="Login" onClick={this.login} />
-                                    <Link to="/signup" replace>
+                                    <Link to="/create_user" replace>
                                         <input type='submit' className="large ui blue button" value="Create Profile" />
                                     </Link>
                                 </Form.Field>

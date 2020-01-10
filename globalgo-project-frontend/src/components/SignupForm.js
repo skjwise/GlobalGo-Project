@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import Footer from './Footer'
 import config from 'react-global-configuration';
 
+// localhost/create_user
 
 export class SignupForm extends Component {
     constructor() {

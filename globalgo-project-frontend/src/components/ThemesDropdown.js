@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {Dropdown} from 'semantic-ui-configuration';
-import config from 'react-global-configuration';
+// import {Dropdown} from 'semantic-ui-configuration';
+// import config from 'react-global-configuration';
 
 
-export class ThemeDropdown extends Component {
+export class ThemesDropdown extends Component {
 
     // state 
+    
     // componentDidMount 
     // ChangeState
     // handleChange
@@ -19,4 +20,4 @@ export class ThemeDropdown extends Component {
     }
 }
 
-export default ThemeDropdown;
+export default ThemesDropdown;
