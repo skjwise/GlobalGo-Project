@@ -184,30 +184,32 @@ export class SignupForm extends Component {
                   <div id="form-group-div">
                   <Form.Group widths='equal'>
                     <Form.Field required>
-                     <label>Username</label>
+                     <label>Username: </label>
                      <input ref={this.username} name='username' placeholder='username'/>
                      </Form.Field>
 
                      <Form.Field required>
-                     <label>Password</label>
+                     <label>Password: </label>
                      <input ref={this.password} type="password" name='password' placeholder='password'/>
                      </Form.Field>
 
                      <Form.Field required>
-                     <label>First Name</label>
+                     <label>First Name: </label>
                      <input ref={this.firstname} type="text" name='firstname' placeholder='First Name'/>
                      </Form.Field>
 
                      <Form.Field required>
-                     <label>Last Name</label>
+                     <label>Last Name: </label>
                      <input ref={this.lastname} type="text" name='lastname' placeholder='Last Name'/>
                      </Form.Field>
 
                      <Form.Field required>
-                     <label>Email Address</label>
+                     <label>Email Address: </label>
                      <input ref={this.email} type="email"name='email' placeholder='email'/>
                      </Form.Field>
                   </Form.Group>
+                  <br/>
+
                   <Form.Group id="fields-div" flex>
                     <label id="top-themes">Top Themes (Up to 3)</label>
                     <div>
@@ -217,6 +219,8 @@ export class SignupForm extends Component {
                     </div>
                   </Form.Group>
                 </div>
+                <br/>
+
                 <Form.Group className="country-drop-div" flex>
                   <Form.Field required>
                   <label id="default-country">Default Country</label>
@@ -232,6 +236,8 @@ export class SignupForm extends Component {
                   />
                 </Form.Field>
                 </Form.Group>
+                <br/>
+
                      <div id="button-div">
                        <Form.Field>
                          <Button>Create Profile</Button>
