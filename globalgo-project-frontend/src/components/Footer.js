@@ -12,7 +12,7 @@ export class Footer extends Component {
                         <Menu.Item name='gg-link'>
                             <p id="gg-link-p">All project data from 
                             <a id="gg-anchor" href="https://www.globalgiving.org/" target="blank">
-                               <img id="gg-footer" /></a></p>
+                               <img id="gg-footer" src={require('../image/GG2015_Logo_horizontal_4color.png')} /></a></p>
                         </Menu.Item>
                     </Menu>
                 </Responsive>
