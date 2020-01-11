@@ -252,7 +252,6 @@ export class SignupForm extends Component {
                 </div>
                 </container>
                 <div id="footer-div">
-                  <Footer />
                 </div>
             </div>
         )
