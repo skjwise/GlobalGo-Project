@@ -2,36 +2,56 @@ import React, { Component } from 'react';
 import {Dropdown} from 'semantic-ui-react';
 // import config from 'react-global-configuration';
 
-const themeOptions = [
-    {key:'Education', text:'Education', value:'Education'},
-    {key:'Animals', text:'Animals', value:'Animals'},
-    {key:'Health', text:'Health', value:'Health'},
-    {key:'Children', text:'Children', value:'Children'},
-    {key:'Human Rights', text:'Human Rights', value:'Human Rights'},
-    {key:'Environment', text:'Environment', value:'Environment'},
-    {key:'Hunger', text:'Hunger', value:'Hunger'},
-    {key:'Sport', text:'Sport', value:'Sport'},
-    {key:'Education', text:'Education', value:'Education'},
 
-]
-
-
-export class ThemesDropdown extends Component {
-
-    // state 
-    
-    // componentDidMount 
-    // ChangeState
-    // handleChange
-     
-
-    render() {
-        return (
-            <div>
-                
-            </div>
-        );
+export default class ThemesDropdown extends Component {
+    constructor(props){
+      super(props)
+      this.state = {
+        options: [],
+        themes: this.props.themes,
+        filteredThemes: this.props.mapThemes,
+        themeNamesArray: []
+      }
+    }
+  
+    componentDidMount(){
+      const url = `${this.props.API_URL}/themes`
+      let newOptions = []
+      let themeNamesArray = []
+      fetch(url)
+      .then(res=>res.json())
+      .then(json=> {
+        json.forEach(theme => {
+          newOptions.push({key: theme["name"], text: theme["name"], value: theme["name"]})
+          themeNamesArray.push(theme["name"])
+        })
+        newOptions.unshift({key: "All", text: "All", value: "All"})
+      })
+      .then(() => this.changeState(newOptions), this.setState({themeNamesArray: themeNamesArray}))
+    }
+  
+    changeState = newOptions => {
+      this.setState({options: newOptions})
+    }
+  
+    handleChange = data => {
+      if(data.value.includes("All")){
+        this.setState({filteredThemes: this.state.themeNamesArray})
+        this.props.updateMapThemes(this.state.themeNamesArray)
+      } else {
+        this.setState({filteredThemes: data.value})
+        this.props.updateMapThemes(data.value)
+      }
+    }
+  
+    render(){
+      return(<Dropdown
+        className="themes-drop"
+        value={this.state.filteredThemes}
+        onChange={this.handleChange}
+        placeholder='Themes'
+        fluid multiple selection
+        options={this.state.options}
+      />)
     }
 }
-
-export default ThemesDropdown;
