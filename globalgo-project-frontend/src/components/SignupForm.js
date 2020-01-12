@@ -1,7 +1,6 @@
 import React, { Component} from 'react'
 import { Dropdown, Button, Form, Grid, Header, Checkbox, List, Icon } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
-import Footer from './Footer'
 import config from 'react-global-configuration';
 
 // localhost/create_user
@@ -61,14 +60,14 @@ export class SignupForm extends Component {
     // }
 
     getThemes = () => {
-      const url = `${this.props.API_URL}/themes`
+      const url = `${this.props.API_URL}/api/v1/themes`
       fetch(url)
       .then(res=>res.json())
       .then(json => {this.setState({themes: json})})
     }
 
     createUser = () => {
-        const URL = `${this.props.API_URL}/users`
+        const URL = `${this.props.API_URL}/api/v1/users`
         let[theme_id_1, theme_id_2, theme_id_3] = this.state.topThemes
         if(!theme_id_1){
           theme_id_1 = null

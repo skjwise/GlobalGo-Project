@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import MapBrowser from './containers/MapBrowser';
-// import HomePage from './containers/HomePage';
-// import CreateUserForm from './components/createUserForm';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Profile from './components/Profile';

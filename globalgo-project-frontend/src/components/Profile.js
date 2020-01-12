@@ -3,7 +3,6 @@ import { Grid } from 'semantic-ui-react'
 import FavoriteThemes from './FavoriteThemes'
 import Navbar from './Navbar'
 import StarredProjectsList from './StarredProjectsList'
-import Footer from './Footer'
 import { withRouter } from 'react-router-dom'
 import config from 'react-global-configuration';
 
@@ -130,7 +129,6 @@ class Profile extends Component {
               </Grid>
           </section>
           <div id="footer-div">
-            <Footer />
           </div>
         </div>
         )

@@ -4,14 +4,12 @@ import config from 'react-global-configuration';
 
 export default class FavoriteThemes extends Component {
 
-  constructor(){
-    super()
-    this.state = {
-      userThemes: [],
-      themes: [],
-      themeOptions: [],
-    }
+  state = {
+    userThemes: [],
+    themes: [],
+    themeOptions: [],
   }
+  
 
   componentWillMount(){
     console.log('in mount')
@@ -29,7 +27,7 @@ export default class FavoriteThemes extends Component {
     .then(()=> this.fetchUserThemes())
   }
 
-  getThemeFromId = (themeId) => {
+  getThemeFromId = themeId => {
     let theme = this.state.themes.find(theme=>theme.id===themeId)
     return theme
   }
@@ -42,8 +40,8 @@ export default class FavoriteThemes extends Component {
           'Authorization': 'Bearer ' + token
         }
       })
-      .then(res=>res.json())
-      .then(json=> {
+      .then(r => r.json())
+      .then(json => {
         themeArray.push(this.getThemeFromId(json.user.theme1))
         themeArray.push(this.getThemeFromId(json.user.theme2))
         themeArray.push(this.getThemeFromId(json.user.theme3))
@@ -55,7 +53,7 @@ export default class FavoriteThemes extends Component {
       return themeArray
   }
 
-  returnDropdown = (themeNum) => {
+  returnDropdown = themeNum => {
     let userTheme = this.state.userThemes[0]
     let themes = this.state.themes
       return this.state.themes.map((theme) => {
