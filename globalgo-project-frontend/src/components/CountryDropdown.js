@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
+import { Dropdown } from 'semantic-ui-react'
 
-export class CountryDropdown extends Component {
-    render() {
-        return (
-            <div>
-                <h2>Country Dropdown</h2>
-            </div>
-        );
+export default class CountryDropdown extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      countryList: [],
+      selectedCountry: null,
     }
+  }
+
+  handleChange = data => {
+    if(this.props.onProjectBrowser){
+      this.setState({selectedCountry: data.value}, this.props.fetchThemeProjects)
+    } else {
+      this.setState({selectedCountry: data.value})
+    }
+  }
+
+  render(){
+    return(<Dropdown
+      className="country-drop"
+      value={this.state.selectedCountry}
+      onChange={this.handleChange}
+      placeholder='Countries'
+      options={this.state.options}
+      />)
+  }
+
 }
 
-export default CountryDropdown;

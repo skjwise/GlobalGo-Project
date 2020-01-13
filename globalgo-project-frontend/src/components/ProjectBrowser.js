@@ -10,9 +10,9 @@ import {Link, Element, Events, animateScroll as scroll, scrollSpy, scroller} fro
 import config from 'react-global-configuration';
 
 // localhost3001/projects
-// https://api.globalgiving.org/api/public/projectservice/all/projects
 
-
+const COUNTRIES_URL = `https://api.globalgiving.org/api/public/projectservice/countries/IN/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`
+const THEME_PROJECTS_URL = `https://api.globalgiving.org/api/public/projectservice/themes/edu/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`
 
 export class ProjectBrowser extends Component {
     constructor(props){
@@ -74,9 +74,13 @@ export class ProjectBrowser extends Component {
     // }
 
     fetchProjects = () => {
-        const countryCode = this.state.selectedCountry
-        const url = `${this.props.API_URL}/get_projects?countryCode=${countryCode}`
-        fetch(url)
+        fetch(COUNTRIES_URL,{
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "applicaiont/json"
+            }
+        })
         .then(r => r.json())
         .then(json => {
             this.setState({countryProjects: json})
@@ -85,7 +89,7 @@ export class ProjectBrowser extends Component {
 
     fetchThemeProjects = () => {
         const countryCode = this.state.selectedCountry
-        const url = `${this.props.API_URL}/get_theme_projects`
+        const url = `${THEME_PROJECTS_URL}`
         fetch(url, {
             method: "POST",
             headers: {
@@ -102,7 +106,7 @@ export class ProjectBrowser extends Component {
         })
     }
 
-    handleChange = (e, data) => {
+    handleChange = data => {
         this.setState({selectedCountry: data.value}, this.fetchThemeProjects)
     }
 

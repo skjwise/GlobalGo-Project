@@ -8,7 +8,7 @@ import MobileLanding from './components/MobileLanding';
 import ProjectBrowser from './components/ProjectBrowser';
 import DonationPage from './components/DonationPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import config from 'react-global-configuration';
+// import config from 'react-global-configuration';
 
 
 const initialState = {
@@ -21,19 +21,29 @@ const initialState = {
   user: {}
 }
 
-const API_URL = 'http://localhost:3000';
-// const USERS_URL = `${API_URL}/users`;
-// const COUNTRY_URL = `${API_URL}/countries`;
-// const PROFILE_URL = `${API_URL}/profile`;
-// const THEMES_URL = `${API_URL}/themes`
-// const PROJECTS_URL = `${API_URL}/projects`;
+const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
+const USERS_URL = `http://localhost:3000/api/v1/users`;
+const THEMES_URL = `https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`;
+const COUNTRIES_URL = `https://api.globalgiving.org/api/public/projectservice/countries/IN/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`;
 
 class App extends Component {
-
   state = {initialState}
 
   componentDidMount(){
+    this.getProjects()
     this.getThemes()
+  }
+
+  getProjects = () => {
+    fetch(PROJECTS_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(console.log)
   }
 
   getThemeFromId = themeId => {
@@ -42,90 +52,24 @@ class App extends Component {
   }
   
   getThemes = () => {
-    const url = `${API_URL}/themes`
-    fetch(url)
-    .then(res=>res.json())
+    fetch(THEMES_URL, {
+      method: "GET",
+      headers: {
+        "Content-Tpye": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    // .then(console.log)
     .then(json => {
       if (json.length !== 0) {
         this.setState({themes: json})
-        // this.setState({themes: json}, this.fetchUserThemes())
       }
-      // if (this.state.user.keys){
       if (localStorage.getItem("jwt")){
         this.fetchUserThemes()
       }
     })
-  }
-  
-    fetchUserThemes = () => {
-      let themeArray = []
-      let token = localStorage.getItem("jwt")
-  
-        fetch(`${API_URL}/profile`, {
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        })
-        .then(res=>res.json())
-        .then(json=> {
-          if(!json["error"]){
-            if(json.user.theme1){
-              themeArray.push(this.getThemeFromId(json.user.theme1).name)
-            }
-            if(json.user.theme2){
-              themeArray.push(this.getThemeFromId(json.user.theme2).name)
-            }
-            if(json.user.theme3) {
-              themeArray.push(this.getThemeFromId(json.user.theme3).name)
-            }
-            this.setState({
-              userThemes: themeArray,
-              updatedThemes: true
-            })
-          }
-        })
-    }
-  
-  
-    updateAppThemes = themes => {
-      this.setState({userThemes: themes})
-  
-    }
-  
-    updateSelectedCountry = country => {
-      if(country){
-        this.setState({
-          updatedSelectedCountry: true,
-          selectedCountry: country
-        })
-      }
-    }
-  
-    handleDonate = project => {
-      this.setState({selectedProject: project})
-      localStorage.removeItem('selectedProject')
-      localStorage.setItem('selectedProject', JSON.stringify(project))
-    }
-  
-    logout = () => {
-      localStorage.setItem('jwt', '')
-      localStorage.setItem('username', '')
-      localStorage.setItem('email', '')
-      localStorage.setItem('first_name', '')
-      localStorage.setItem('last_name', '')
-      localStorage.setItem('selectedProject', '')
-      this.resetState()
-      return true
-    }
-  
-    resetState = () =>{
-      this.setState(initialState)
-    }
-  
-    setUser = user => {
-      console.log('set user')
-      this.setState({user: user, selectedCountry: user.default_country})
-    }
+  }  
   
     render() {
       return (

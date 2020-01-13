@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom'
 import config from 'react-global-configuration';
 
 // localhost/create_user
+const THEMES_URL = `https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`
+const COUNTRIES_URL = `https://api.globalgiving.org/api/public/projectservice/countries/IN/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`;
+
 
 export class SignupForm extends Component {
     constructor() {
@@ -60,7 +63,8 @@ export class SignupForm extends Component {
     // }
 
     getThemes = () => {
-      const url = `${this.props.API_URL}/api/v1/themes`
+      // const url = `${this.props.API_URL}/api/v1/themes`
+      const url = `${THEMES_URL}`
       fetch(url)
       .then(res=>res.json())
       .then(json => {this.setState({themes: json})})
@@ -106,7 +110,7 @@ export class SignupForm extends Component {
             .catch(error => console.log(error))
     }
 
-    handleSubmit = (e, data)=>{
+    handleSubmit = () =>{
       //can check themes here
       console.log(this.state.topThemes.length)
       if(this.state.topThemes.length > 3){
@@ -134,7 +138,7 @@ export class SignupForm extends Component {
       return comparison;
     }
 
-    handleChange = (ev, data) =>{
+    handleChange = data =>{
       let prevThemes = this.state.topThemes
         if(data.checked){
           prevThemes.push(data.value)
@@ -145,22 +149,22 @@ export class SignupForm extends Component {
         this.setState({topThemes: prevThemes})
     }
 
-    // renderThemeField = () => {
-    //   return this.props.themes.map(theme => {
-    //     return(
-    //       <List.Item>
-    //         <Form.Field
-    //           control={Checkbox}
-    //           label={theme.name}
-    //           value={theme.id}
-    //           checked={this.state.checked}
-    //           onChange={this.handleChange}
-    //           onClick={this.handleClick}
-    //       />
-    //       </List.Item>
-    //       )
-    //     })
-    //   }
+    renderThemeField = () => {
+      return this.state.themes.map(theme => {
+        return(
+          <List.Item>
+            <Form.Field
+              control={Checkbox}
+              label={theme.name}
+              value={theme.id}
+              checked={this.state.checked}
+              onChange={this.handleChange}
+              onClick={this.handleClick}
+          />
+          </List.Item>
+          )
+        })
+      }
 
     handleCountryChange = data => {
       console.log('in handle country change')

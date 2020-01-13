@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { Header, Icon, Form } from 'semantic-ui-react';
-import config from 'react-global-configuration';
+// import config from 'react-global-configuration';
 
 
 export class LoginForm extends Component {

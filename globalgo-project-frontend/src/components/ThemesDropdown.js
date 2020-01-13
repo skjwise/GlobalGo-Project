@@ -15,7 +15,7 @@ export default class ThemesDropdown extends Component {
     }
   
     componentDidMount(){
-      const url = `${this.props.API_URL}/themes`
+      const url = `${this.props.API_URL}/api/v1/themes`
       let newOptions = []
       let themeNamesArray = []
       fetch(url)
