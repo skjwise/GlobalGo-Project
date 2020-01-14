@@ -1,4 +1,4 @@
-const API_ENDPOINT = "http://localhost:3000";
+const API_ENDPOINT = "http://localhost:3000/api/v1";
 const USERS_URL = `${API_ENDPOINT}/users`;
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate_user`;
@@ -58,5 +58,5 @@ export const validateUser = () => {
 export default {
   login,
   signUp,
-  validateUser,
+  validateUser
 };

@@ -1,40 +1,47 @@
-import React, {Component} from 'react';
-import './App.css';
-import MapBrowser from './containers/MapBrowser';
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
-import Profile from './components/Profile';
-import MobileLanding from './components/MobileLanding';
-import ProjectBrowser from './components/ProjectBrowser';
-import DonationPage from './components/DonationPage';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import config from 'react-global-configuration';
-
-
-const initialState = {
-  userThemes: [],
-  themes: [],
-  updateThemes: false,
-  selectedCountry: "",
-  updatedSelectedCountry: false,
-  selectedProject: {},
-  user: {}
-}
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import API from "./adapters/API";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import DonationPage from "./components/DonationPage";
+import { Container } from "semantic-ui-react";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import AllProjects from "./components/AllProjects";
+import "./App.css";
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-const USERS_URL = `http://localhost:3000/api/v1/users`;
-const THEMES_URL = `https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`;
-const COUNTRIES_URL = `https://api.globalgiving.org/api/public/projectservice/countries/IN/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c`;
 
-class App extends Component {
-  state = {initialState}
 
-  componentDidMount(){
-    this.getProjects()
-    this.getThemes()
-  }
+function App() {
+  const [user, setUser] = useState(null);
+  const [projects, setAllProjects] = useState([]);
+  const history = useHistory();
 
-  getProjects = () => {
+
+  useEffect(() => {
+    getProjects();
+    API.validateUser()
+      .then(user => setUser(user))
+      .catch(console.error);
+  }, []);
+
+  const handleLogin = user => {
+    setUser(user);
+    history.push("/AllProjects");
+  };
+
+  const handlelogout = () => {
+    setUser(null);
+    localStorage.clear();
+    history.push("/");
+  };
+
+  // componentDidMount(){
+  //   this.getProjects()
+  // }
+
+  const getProjects = () => {
     fetch(PROJECTS_URL, {
       method: "GET",
       headers: {
@@ -43,126 +50,43 @@ class App extends Component {
       }
     })
     .then(r => r.json())
-    .then(console.log)
+    // .then(console.log)
+    .then(projects => setAllProjects(projects.projects))
   }
 
-  getThemeFromId = themeId => {
-    let theme = this.state.themes.find(theme => theme.id === themeId)
-    return theme
-  }
-  
-  getThemes = () => {
-    fetch(THEMES_URL, {
-      method: "GET",
-      headers: {
-        "Content-Tpye": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    .then(r => r.json())
-    // .then(console.log)
-    .then(json => {
-      if (json.length !== 0) {
-        this.setState({themes: json})
-      }
-      if (localStorage.getItem("jwt")){
-        this.fetchUserThemes()
-      }
-    })
-  }  
-  
-    render() {
-      return (
-        <div className="App">
-          <Router>
-            <Route
-              exact path="/"
-              render={(props) => (
-              <LoginForm {...props}
-                resetState={this.resetState}
-                onLogin={this.updateUser}
-                setUser={this.setUser}
-                updateSelectedCountry={this.updateSelectedCountry}
-                fetchUserThemes={this.fetchUserThemes}
-                getThemes={this.getThemes}
-                />
-                )}
-              />
-            {(this.state.updatedThemes)
-            ? <Route
-              path={'/mobile_landing'}
-              render={()=><MobileLanding
-                updateSelectedCountry={this.updateSelectedCountry}
-                updateAppThemes={this.updateAppThemes}
-                themes={this.state.themes}
-                userThemes={this.state.userThemes}
-                fetchUserThemes={this.fetchUserThemes}
-                logout={this.logout}
-                appSelectedCountry={this.state.selectedCountry}
-              />}
-              />
-            : <div></div>}
-            {(this.state.updatedThemes)
-              ? <Route
-                path={'/map'}
-                render={()=><MapBrowser
-                  updateSelectedCountry={this.updateSelectedCountry}
-                  updateAppThemes={this.updateAppThemes}
-                  themes={this.state.themes}
-                  userThemes={this.state.userThemes}
-                  fetchUserThemes={this.fetchUserThemes}
-                  logout={this.logout}
-                  appSelectedCountry={this.state.selectedCountry}
-                />}
-              />
-            : <div></div>}
-              <Route
-                path={'/create_user'}
-                render={()=><SignupForm
-                getThemes={this.getThemes}
-                themes={this.state.themes}
-                />}
-              />
-              <Route
-                path={'/profile'}
-                render={()=><Profile
-                              updateAppThemes={this.updateAppThemes}
-                              handleDonate={this.handleDonate}
-                              logout={this.logout}
-                              getThemes={this.fetchUserThemes}
-                            />}
-              />
-              {(this.state.updatedThemes)
-            ? <Route
-                path={'/projects'}
-                render={()=><ProjectBrowser
-                              handleDonate={this.handleDonate}
-                              updatedSelectedCountry={this.state.updatedSelectedCountry}
-                              updateSelectedCountry={this.updateSelectedCountry}
-                              appSelectedCountry={this.state.selectedCountry}
-                              updateAppThemes={this.updateAppThemes}
-                              themes={this.state.themes}
-                              userThemes={this.state.userThemes}
-                              fetchUserThemes={this.fetchUserThemes}
-                              logout={this.logout}
-                            />}
-                />
-              : <div></div>}
-  
-            {(this.state.selectedProject)
-            ? <Route
-              path={'/donate'}
-              render={() => <DonationPage
-                project={this.state.selectedProject}
-                logout={this.logout}
-                />}
-              />
-            : <div></div>}
-            </Router>
-        </div>
-  
-      );
-    }
-  }  
+  return (
+    <div className="background">
+      <Navbar user={user} onSuccess={handlelogout} />
+      <Container style={{ align: "inline-block" }}>
+        <Router >
+        <Route exact path="/" component={Home} />
+        <Route exact path="/logout" component={Home} />
+        <Route
+          exact
+          path="/signup"
+          render={props => <SignUp {...props} onSuccess={handleLogin} />}
+        />
+        <Route
+          exact
+          path="/login"
+          render={props => <Login {...props} onSuccess={handleLogin} />}
+        />
+        <Route
+          exact
+          path="/allproducts"
+          render={props => (
+            <AllProjects {...props} projects={this.state.projects} setAllProjects={this.state.projects} /> )}
+        />
+        <Route
+          exact
+          path="/donation"
+          render={props => <DonationPage {...props} />}
+        />
+        </Router>
+      </Container>
+    </div>
+  );
+}
 
 export default App;
+
