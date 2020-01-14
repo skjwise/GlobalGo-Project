@@ -1,26 +1,23 @@
 import React from 'react';
-import {Grid, Label, Segment } from 'semantic-ui-react';
+import {Grid, Segment, Label } from 'semantic-ui-react';
 import ProjectCard from './ProjectCard';
 
 
-const AllProjects = ({props, projects, setAllProjects}) => {
-
-    const singleProject = (setAllProjects) => { 
-        setAllProjects.map(project => console.log(project))
-    }
+const AllProjects = ({projects}) => {
 
     return (
         <React.Fragment>
             <Grid.Column width={3}>
                 <Grid>
-                    <Label>
-                        All Projects
-                    </Label>
-                    <ProjectCard project={singleProject} />
+                    <Segment>
+                        {/* <Label> All Projects </Label> */}
+                        <Grid.Row columns={2}>
+                            {projects.map(project => <ProjectCard project={project} />)}
+                        </Grid.Row>
+                    </Segment>
                 </Grid>
             </Grid.Column>
         </React.Fragment>
-
     );
 }
 

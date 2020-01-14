@@ -10,7 +10,7 @@ import Home from "./components/Home";
 import AllProjects from "./components/AllProjects";
 import "./App.css";
 
-const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
+const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
-    history.push("/AllProjects");
+    history.push("/allProjects");
   };
 
   const handlelogout = () => {
@@ -50,7 +50,6 @@ function App() {
       }
     })
     .then(r => r.json())
-    // .then(console.log)
     .then(projects => setAllProjects(projects.projects))
   }
 
@@ -73,9 +72,9 @@ function App() {
         />
         <Route
           exact
-          path="/allproducts"
+          path="/allProjects"
           render={props => (
-            <AllProjects {...props} projects={this.state.projects} setAllProjects={this.state.projects} /> )}
+            <AllProjects {...props} projects={projects} /> )}
         />
         <Route
           exact
