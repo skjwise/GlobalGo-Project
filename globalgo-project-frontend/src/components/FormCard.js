@@ -34,7 +34,7 @@ const FormCard = props => {
               <Form.Field style={{ textAlign: "center" }}>
                 <Label as="a" tag color="purple">
                   {" "}
-                  Username
+                  Username: 
                 </Label>
                 <input
                   type="text"
@@ -46,7 +46,7 @@ const FormCard = props => {
 
               <Form.Field>
                 <Label as="a" tag color="purple">
-                  Password
+                  Password: 
                 </Label>
                 <input
                   type="password"
@@ -72,9 +72,8 @@ const FormCard = props => {
 
                 <Form.Field>
                   <Label as="a" tag color="purple">
-                    Email
+                    Email: 
                   </Label>
-                  <br/>
                   <input
                     type="email"
                     name="email"

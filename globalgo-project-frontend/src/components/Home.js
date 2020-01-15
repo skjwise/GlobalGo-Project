@@ -9,7 +9,9 @@ const Home = () => {
         <Card style={{ height: "285px", width: "350px", margin: "30px" }} >
             <Card.Content>
             <Card.Header>GlobalGo</Card.Header>
+            <br/>
             <Card.Meta>Please Sign Up or Login</Card.Meta>
+            <br/>
             <Card.Description>
             Making it easy and safe for you to give to local projects anywhere in the world, while providing nonprofits with the tools, training, and support they need to become more effective.
             </Card.Description>

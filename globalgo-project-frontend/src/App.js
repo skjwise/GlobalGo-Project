@@ -74,7 +74,7 @@ function App() {
           exact
           path="/allProjects"
           render={props => (
-            <AllProjects {...props} projects={projects} /> )}
+            <AllProjects {...props} projects={projects.project} /> )}
         />
         <Route
           exact

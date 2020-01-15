@@ -16,19 +16,11 @@
   margin-bottom: 40px;
 }
 
-#footer-div {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
+#Donation-Form{
+  text-align: center;
 }
 
-#absolute-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100vw;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .borderless.menu {
   text-align: center;

@@ -1,11 +1,93 @@
 import React from 'react';
-// import {Form} from 'semantic-ui-react';
+import {Form, Input} from 'semantic-ui-react';
+
+
+// need to add a form for Credit Card details
 
 const DonationPage = () => {
     return (
-        <div>
-            Donation Page
+        <div id="Donation-Form">
+            <h3>Donation Page - Payment Information</h3>
+            <form>
+                <br/>
+                <div className="field">
+                    <label>Amount: £ </label>
+                    <input type="text" placeholder="£1 minimum" />
+                </div>
+                <br/>
+                <div className="field">
+                    <label>Card Type</label>
+                    <div className="ui semantic dropdown">
+                        <input type="hidden" name="card[type]" />
+                        <select className="dropdown icon">
+                            <option data-value="">Type</option>
+                            <option data-value="visa"> Visa </option>
+                            <option data-value="amex"> American Express</option>
+                        </select>
+                    </div>
+                </div>
+                <br/>
+                <div className="fields">
+                    <div className="seven wide field">
+                        <label> Card Number: </label>
+                        <input type="text" name="card[number]" maxLength="16" placeholder="Card #"></input>
+                    </div>
+                    <br/>
+                    <div className="fields">
+                        <div className="three wide field">
+                            <label>CVC: </label>
+                            <input type="text" name="card[cvc]" maxLength="3" placeholder="CVC"></input> 
+                        </div>
+                    </div>
+                    <br/>
+                    <div className="six wide fields">
+                        <label>Expiration: </label>
+                        <div className="two fields">
+                            <div className="field">
+                                <select className="ui fluid search dropdown" name="card[expire-month]">
+                                    <option value="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                            <div className="field">
+                                <input type="text" name="card[expire-year]" maxLength="4" placeholder="Year"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 className="ui dividing header">Confirmation</h3>
+                    <div className="field">
+                        <label>Email: </label>
+                        <input type="text" name="email" placeholder="Email"></input>
+                        <br/>
+                        <div className="ui toggle checkbox">
+                            <input type="checkbox" name="donation" tabIndex="0"></input>
+                            <label>Do not include a confirmation email</label>
+                        </div>
+                    </div>
+                </div>
+                <button>Submit</button>
+            </form>
         </div>
+            // <Form>
+            //       
+            // <h4 class="ui dividing header">Confirmation</h4>
+            // <div class="ui toggle checkbox">
+            //     <Input type="checkbox" name="donation" tabindex="0" class="hidden"></Input>
+            //     <label>Do not include a confirmation email</label>
+            // </div>
+            // <div class="ui button" tabindex="0">Submit</div>
+            // </Form>
     );
 }
 
