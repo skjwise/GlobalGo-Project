@@ -19,7 +19,7 @@ const SignUp = props => {
 
   return (
     <FormCard
-      title="Sign Up!"
+      title="Please Sign Up below!"
       button="Sign up"
       signUp={true}
       handleSubmit={handleSignupSubmit}

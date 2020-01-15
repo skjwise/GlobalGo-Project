@@ -8,6 +8,7 @@ import { Container } from "semantic-ui-react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import AllProjects from "./components/AllProjects";
+import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
@@ -75,6 +76,12 @@ function App() {
           path="/allProjects"
           render={props => (
             <AllProjects {...props} projects={projects.project} /> )}
+        />
+        <Route
+          exact
+          path="/project"
+          render={props => (
+            <ProjectDetails {...props} projects={projects.project} /> )}
         />
         <Route
           exact

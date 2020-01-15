@@ -2,6 +2,7 @@
 .App {
   text-align: left;
   height: 100vh !important;
+  background-color: darkgrey;
 }
 
 .computer.only.tablet.only.four.column {
@@ -15,6 +16,26 @@
 .project-dropdown-row {
   margin-bottom: 40px;
 }
+
+#Home {
+  text-align: center;
+}
+.responsive{
+  width: 100%;
+  height: auto;
+}
+
+#all-projects{
+  text-align: center;
+
+}
+#project-card{
+  border: #282c34;
+  text-align: center;
+  padding: 10px;
+}
+
+
 
 #Donation-Form{
   text-align: center;
