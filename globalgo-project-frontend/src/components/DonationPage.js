@@ -1,8 +1,5 @@
 import React from 'react';
-import {Form, Input} from 'semantic-ui-react';
-
-
-// need to add a form for Credit Card details
+// import {Form, Input} from 'semantic-ui-react';
 
 const DonationPage = () => {
     return (

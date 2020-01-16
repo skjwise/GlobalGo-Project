@@ -18,12 +18,12 @@ export class Navbar extends Component {
           active={activeItem === "home"}
           onClick={this.handleItemClick}
         >
-          <Icon name="home" color="purple" size="large" />
+        <Icon name="home" color="purple" size="large" />
         </Menu.Item>
         {this.props.user ? (
           <React.Fragment>
             <Menu.Item
-              name="GlobalGo"
+              name="Projects"
               as={NavLink}
               exact
               to="/allProjects"
