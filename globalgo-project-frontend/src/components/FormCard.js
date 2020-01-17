@@ -43,7 +43,7 @@ const FormCard = props => {
                   onChange={event => props.handleChange(event)}
                 />
               </Form.Field>
-
+              <br/>
               <Form.Field>
                 <Label as="a" tag color="purple">
                   Password: 
@@ -55,7 +55,7 @@ const FormCard = props => {
                   onChange={event => props.handleChange(event)}
                 />
               </Form.Field>
-
+              <br/>
               {props.signUp && (
                 // <Form.Field>
                 //     <Label as="a" tag color="purple">
@@ -69,7 +69,7 @@ const FormCard = props => {
                 //     onChange={event => props.handleChange(event)}
                 //     />
                 // </Form.Field>
-
+                
                 <Form.Field>
                   <Label as="a" tag color="purple">
                     Email: 

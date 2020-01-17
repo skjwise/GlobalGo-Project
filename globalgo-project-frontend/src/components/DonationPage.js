@@ -2,10 +2,11 @@ import React from 'react';
 // import {Form, Input} from 'semantic-ui-react';
 
 const DonationPage = () => {
+
     return (
         <div id="Donation-Form">
             <h3>Donation Page - Payment Information</h3>
-            <form>
+            <form onSubmit="return confirm('Are you sure you wish to donate?');" >
                 <br/>
                 <div className="field">
                     <label>Amount: £ </label>
@@ -58,33 +59,30 @@ const DonationPage = () => {
                                 </select>
                             </div>
                             <div className="field">
-                                <input type="text" name="card[expire-year]" maxLength="4" placeholder="Year"></input>
+                                <input type="text" name="card[expire-year]" maxLength="4" placeholder="2023"></input>
                             </div>
                         </div>
                     </div>
+                    <br/>
+                    <br/>
                     <h3 className="ui dividing header">Confirmation</h3>
                     <div className="field">
                         <label>Email: </label>
-                        <input type="text" name="email" placeholder="Email"></input>
+                        <input type="text" name="email" placeholder="sarah@gmail.com"></input>
                         <br/>
+                        <br/>
+
                         <div className="ui toggle checkbox">
                             <input type="checkbox" name="donation" tabIndex="0"></input>
                             <label>Do not include a confirmation email</label>
                         </div>
                     </div>
                 </div>
-                <button>Submit</button>
+                <br/>
+
+                <button >Submit</button>
             </form>
         </div>
-            // <Form>
-            //       
-            // <h4 class="ui dividing header">Confirmation</h4>
-            // <div class="ui toggle checkbox">
-            //     <Input type="checkbox" name="donation" tabindex="0" class="hidden"></Input>
-            //     <label>Do not include a confirmation email</label>
-            // </div>
-            // <div class="ui button" tabindex="0">Submit</div>
-            // </Form>
     );
 }
 
