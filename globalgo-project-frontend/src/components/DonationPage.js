@@ -3,10 +3,15 @@ import React from 'react';
 
 const DonationPage = () => {
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("thank you for the donation")
+    }
+
     return (
         <div id="Donation-Form" >
-            <h3>Donation Page - Payment Information</h3>
-            <form onSubmit="return confirm('Thank you for your donation!');" >
+            <h3>Payment Information</h3>
+            <form onSubmit={handleSubmit} >
                 <br/>
                 <div className="field">
                     <label>Amount: £ </label>
@@ -21,6 +26,7 @@ const DonationPage = () => {
                             <option data-value="">Type</option>
                             <option data-value="visa"> Visa </option>
                             <option data-value="amex"> American Express</option>
+                            <option data-value="amex"> MasterCard</option>
                         </select>
                     </div>
                 </div>

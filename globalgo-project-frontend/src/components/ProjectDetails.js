@@ -13,9 +13,9 @@ const ProjectDetails = ({project}) => {
             <h5> Organisation:   | Country:  </h5> 
             <br/>
             <h1>Project title:  </h1>
+            <br/>
             {/* <img src={project.imageLink} alt="project-image" /> */}
             {/* <Image src={}  /> */}
-            <br/>
             <h2>PROJECT IMAGE HERE</h2>
             <br/>
             <h3>Project theme</h3>

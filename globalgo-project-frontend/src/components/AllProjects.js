@@ -3,12 +3,14 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 
 
-// maybe add a search feature that searches via theme...
-
 const AllProjects = ({projects}) => {
 
     return (
         <div>
+            {/* <div id="search">
+                <label>Search: </label>
+                <input type="text" name="search" placeholder="search by theme"></input>
+            </div> */}
             <React.Fragment>
                 {projects !== undefined && projects.map(project => <ProjectCard key = {project.id} project={project} />)}
             </React.Fragment>

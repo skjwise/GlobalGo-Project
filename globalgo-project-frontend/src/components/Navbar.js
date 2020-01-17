@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon, Input } from "semantic-ui-react";
 
 export class Navbar extends Component {
   state = { activeItem: "home" };
@@ -9,7 +9,7 @@ export class Navbar extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <Menu pointing secondary color="purple">
+      <Menu pointing >
         <Menu.Item
           name="Home"
           as={NavLink}
@@ -18,7 +18,7 @@ export class Navbar extends Component {
           active={activeItem === "home"}
           onClick={this.handleItemClick}
         >
-        <Icon name="home" color="purple" size="large" />
+        {/* <Icon name="home" color="purple" size="large" /> */}
         </Menu.Item>
         {this.props.user ? (
           <React.Fragment>
@@ -59,6 +59,11 @@ export class Navbar extends Component {
             />{" "}
           </React.Fragment>
         )}
+        <Menu.Menu position='right'>
+            <Menu.Item>
+              <Input icon='search' placeholder='Search...' />
+            </Menu.Item>
+          </Menu.Menu>
       </Menu>
     );
   }

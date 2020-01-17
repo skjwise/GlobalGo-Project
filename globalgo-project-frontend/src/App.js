@@ -12,7 +12,7 @@ import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-
+// const PROJECT_THEMES_URL = ''
 
 function App() {
   const [user, setUser] = useState(null);
