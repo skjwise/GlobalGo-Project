@@ -39,4 +39,4 @@ export default ProjectDetails;
 // Project link -  Project Link: {project.projectLink}
 // Donate Button
 // themeName - need or longTermImpact - remaining 
-// Organisation: {project.contactAddress} 
+// Organisation:  

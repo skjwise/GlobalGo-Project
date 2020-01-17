@@ -19,15 +19,22 @@
 
 }
 #project-card{
-  /* background-color: lightgrey; */
-  border: #282c34;
-  text-align: center;
-  padding: 10px;
+  background-color: lightgrey;
+  border: 3px solid #282c34;
+  text-align: left;
+  width: auto;
+  margin: 20px;
+  padding: 20px;
 }
 #project-details{
   text-align: center;
 }
 
 #Donation-Form{
+  background-color: lightgrey;
   text-align: center;
+  margin: 40px;
+  border: 3px solid darkslategrey;
+  height: 600px;
+  width: 600px;
 }

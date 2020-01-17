@@ -4,9 +4,9 @@ import React from 'react';
 const DonationPage = () => {
 
     return (
-        <div id="Donation-Form">
+        <div id="Donation-Form" >
             <h3>Donation Page - Payment Information</h3>
-            <form onSubmit="return confirm('Are you sure you wish to donate?');" >
+            <form onSubmit="return confirm('Thank you for your donation!');" >
                 <br/>
                 <div className="field">
                     <label>Amount: £ </label>

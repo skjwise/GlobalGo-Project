@@ -19,15 +19,14 @@ const ProjectCard = ({project}) => {
 
     return (
         <div id="project-card">
-        <h2 id="all-projects">All Projects</h2>    
+        <h2 id="project-title"> {project.title} </h2>    
         <Card style={{ height: "300px", width: "600px", margin: "30px" }}>
             <Image src={project.imageLink} wrapped ui={false} /> 
             <Card.Content>
-            <Card.Header> Project Title: {project.title} </Card.Header>
+            <br/>
+            <Card.Header> Funding Raised: £ {project.funding} | Goal: £ {project.goal} </Card.Header>
             <br/>
             <Card.Meta> Contry: {project.country} ({project.iso3166CountryCode}) </Card.Meta>
-            <br/>
-            <Card.Meta> Funding Raised: £ {project.funding}  Goal: £ {project.goal} </Card.Meta>
             <br/>
             <Card.Description>
                 Long Term Impact: {project.longTermImpact}

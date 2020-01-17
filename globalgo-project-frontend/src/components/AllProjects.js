@@ -3,6 +3,8 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 
 
+// maybe add a search feature that searches via theme...
+
 const AllProjects = ({projects}) => {
 
     return (
