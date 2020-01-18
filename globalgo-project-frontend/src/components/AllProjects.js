@@ -3,7 +3,7 @@ import React from 'react';
 import ProjectCard from './ProjectCard';
 
 
-const AllProjects = ({projects}) => {
+const AllProjects = ({projects, selectProject}) => {
 
     return (
         <div>
@@ -12,7 +12,7 @@ const AllProjects = ({projects}) => {
                 <input type="text" name="search" placeholder="search by theme"></input>
             </div> */}
             <React.Fragment>
-                {projects !== undefined && projects.map(project => <ProjectCard key = {project.id} project={project} />)}
+                {projects !== undefined && projects.map(project => <ProjectCard key={project.id} project={project} selectProject={selectProject} />)}
             </React.Fragment>
         </div>
     );

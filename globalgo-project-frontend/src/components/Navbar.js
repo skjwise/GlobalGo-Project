@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Icon, Input } from "semantic-ui-react";
+import { Menu, Input } from "semantic-ui-react";
 
 export class Navbar extends Component {
   state = { activeItem: "home" };

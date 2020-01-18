@@ -3,6 +3,7 @@ import { Form, Label, Grid, Button, Segment } from "semantic-ui-react";
 
 const FormCard = props => {
   return (
+    <div id="form-card">
     <React.Fragment>
       <br />
       <br />
@@ -56,20 +57,7 @@ const FormCard = props => {
                 />
               </Form.Field>
               <br/>
-              {props.signUp && (
-                // <Form.Field>
-                //     <Label as="a" tag color="purple">
-                //     First Name
-                //     </Label>
-                //     <br/>
-                //     <input
-                //     type="first-name"
-                //     name="first-name"
-                //     placeholder="first name"
-                //     onChange={event => props.handleChange(event)}
-                //     />
-                // </Form.Field>
-                
+              {props.signUp && (                
                 <Form.Field>
                   <Label as="a" tag color="purple">
                     Email: 
@@ -101,6 +89,7 @@ const FormCard = props => {
         </Segment>
       </Grid>
     </React.Fragment>
+    </div>
   );
 };
 

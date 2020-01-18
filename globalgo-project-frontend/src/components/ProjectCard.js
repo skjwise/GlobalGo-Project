@@ -1,19 +1,29 @@
-import React from 'react';
-import {Redirect} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
 import { Card, Image, Button } from 'semantic-ui-react';
-import DonationPage from './DonationPage';
 import ProjectDetails from './ProjectDetails';
+import Modal from './Modal'
 
-const ProjectCard = ({project}) => {
+const ProjectCard = ({project, user}) => {
+    const [singleProject, setProject] = useState([]);
+    const [isModalOpen, setModal] = useState(false)  
+    const history = useHistory();
 
     const handleDonateClick = () =>{
         console.log(project.id)
-
+        history.push("/donation");
     }
 
     const handleDetailsClick = () => {
         console.log(project.id)
+        history.push("/projectdetails");
     }
+
+    const selectProject = project => {
+        setProject(singleProject);
+        setModal(true);
+        console.log('project details', project);
+      }
 
     return (
         <div id="project-card">
@@ -31,12 +41,19 @@ const ProjectCard = ({project}) => {
                 Summary: {project.summary}
             </Card.Description>
             <br/>
-            <Button onClick={() => handleDonateClick()} >
-                Donate 
-            </Button>
-            <Button onClick={project => <ProjectDetails key={project.id} project={project} />} > More Details</Button>
+            <Button onClick={() => handleDonateClick()} > Donate </Button>
+            <Button onClick={() => selectProject(project)} > More Details</Button>
             </Card.Content>
         </Card>
+        {isModalOpen && (
+            <Modal closeModal={() => setModal(false)}>
+                <ProjectDetails
+                    project={project}
+                    user={user}
+                    closeModalOnSave={() => setModal(false)}
+                />
+            </Modal>
+        )}
         </div>
     );
 }

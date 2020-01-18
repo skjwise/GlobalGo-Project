@@ -4,21 +4,19 @@ import {Image} from 'semantic-ui-react';
 const ProjectDetails = ({project}) => {
 
     const handleClick = () =>{
-        console.log("test")
+        console.log('project details', project)
     }
 
     return (
         <div id="project-details">
             <br/>
-            <h5> Organisation:   | Country:  </h5> 
+            <h5> Organisation:   | Country: {project.country} </h5> 
             <br/>
-            <h1>Project title:  </h1>
+            <h1>Project title: {project.title} </h1>
             <br/>
-            {/* <img src={project.imageLink} alt="project-image" /> */}
-            {/* <Image src={}  /> */}
-            <h2>PROJECT IMAGE HERE</h2>
+            <img src={project.imageLink} alt="project-image" />
             <br/>
-            <h3>Project theme</h3>
+            <h3>Project theme: </h3>
             <h3>Remaining: | Funding: | Goal: </h3>
             <br/>
             <h5>Project need </h5>

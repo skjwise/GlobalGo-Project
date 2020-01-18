@@ -10,13 +10,17 @@ import Home from "./components/Home";
 import AllProjects from "./components/AllProjects";
 import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
+import Modal from "./components/Modal"
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
 // const PROJECT_THEMES_URL = ''
+// const SEARCH_URL = 'https://api.globalgiving.org/api/public/services/search/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
 
 function App() {
   const [user, setUser] = useState(null);
   const [projects, setAllProjects] = useState([]);
+  // const [project, setProject] = useState([]);
+  // const [isModalOpen, setModal] = useState(false)
   const history = useHistory();
 
 
@@ -54,6 +58,12 @@ function App() {
     .then(projects => setAllProjects(projects.projects))
   }
 
+  // const selectProject = project => {
+  //   setProject(project);
+  //   setModal(true)
+  //   console.log('project details', project);
+  // }
+
   return (
     <div className="background">
       <Navbar user={user} onSuccess={handlelogout} />
@@ -75,13 +85,18 @@ function App() {
           exact
           path="/allProjects"
           render={props => (
-            <AllProjects {...props} projects={projects.project} /> )}
+            <AllProjects {...props} projects={projects.project} 
+            // selectProject={selectProject} 
+            /> )}
         />
         <Route
           exact
           path="/projectdetails"
           render={props => (
-            <ProjectDetails {...props} projects={projects.project} /> )}
+            <ProjectDetails {...props} 
+              // project={project}
+            /> 
+          )}
         />
         <Route
           exact
