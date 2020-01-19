@@ -10,18 +10,18 @@ const ProjectDetails = ({project}) => {
     return (
         <div id="project-details">
             <br/>
-            <h5> Organisation:   | Country: {project.country} </h5> 
+            <h4> Organisation: {project.organization.name}   | Country: {project.country} </h4> 
             <br/>
             <h1>Project title: {project.title} </h1>
             <br/>
             <img src={project.imageLink} alt="project-image" />
             <br/>
-            <h3>Project theme: </h3>
-            <h3>Remaining: | Funding: | Goal: </h3>
+            <h3>Project theme:  </h3>
+            <h3>Remaining: | Funding: {project.funding} | Goal: {project.goal} </h3>
             <br/>
-            <h5>Project need </h5>
+            <h5> Need: {project.need} </h5>
             <br/>
-            <h4>Project Link: </h4>
+            <a href={project.projectLink} >Project Link </a>
             <br/>
             <button onClick={() => handleClick()} > Make a Donation</button>
         </div>
