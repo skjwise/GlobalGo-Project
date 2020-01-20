@@ -59,11 +59,16 @@ export class Navbar extends Component {
             />{" "}
           </React.Fragment>
         )}
-        {/* <Menu.Menu position='right'>
-            <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
-          </Menu.Menu> */}
+        <Menu.Menu position='right'>
+            <Menu.Item
+            name="theme search"
+            as={NavLink}
+            exact
+            to="/themeSearch"
+            active={activeItem === "themeSearch"}
+            onClick={this.handleItemClick}
+            />
+          </Menu.Menu>
       </Menu>
     );
   }

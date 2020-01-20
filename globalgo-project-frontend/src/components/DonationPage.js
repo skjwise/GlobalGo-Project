@@ -12,14 +12,13 @@ const DonationPage = () => {
 
     return (
         <div id="Donation-Form" >
-
-        <Elements>
-            <Payment />
-        </Elements>
-
-
-
             <h3>Payment Information</h3>
+
+            <Elements>
+                <Payment onSubmit={handleSubmit} />
+            </Elements>
+
+            {/* <h3>Payment Information</h3>
             <form onSubmit={handleSubmit} >
                 <br/>
                 <div className="field">
@@ -96,7 +95,7 @@ const DonationPage = () => {
                 <br/>
 
                 <button >Submit</button>
-            </form>
+            </form> */}
         </div>
     );
 }

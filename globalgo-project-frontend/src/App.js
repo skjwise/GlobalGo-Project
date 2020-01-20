@@ -11,13 +11,13 @@ import AllProjects from "./components/AllProjects";
 import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
 import Modal from "./components/Modal";
-import ThemeSearch from './components/ThemeSearch';
 import { StripeProvider } from 'react-stripe-elements';
-
+import AllThemes from './components/AllThemes';
 
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
+const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -47,10 +47,6 @@ function App() {
     history.push("/");
   };
 
-  // componentDidMount(){
-  //   this.getProjects()
-  // }
-
   const getProjects = () => {
     fetch(PROJECTS_URL, {
       method: "GET",
@@ -71,14 +67,15 @@ function App() {
 
   const getThemes = () => {
     fetch(THEMES_URL, {
-      method: 'GET',
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
     })
     .then(r => r.json())
-    .then(themes => setAllThemes(themes))
+    .then(themes => setAllThemes(themes.themes))
+    .then(console.log(themes))
   }
 
   return (
@@ -118,8 +115,8 @@ function App() {
         />
         <Route
           exact
-          path="/themeSearch"
-          render={props => <ThemeSearch {...props} themes={themes} />}
+          path="/allThemes"
+          render={props => <AllThemes {...props} themes={themes.theme} />}
         />
         <Route
           exact

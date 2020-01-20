@@ -34,12 +34,3 @@ const ProjectDetails = ({project}) => {
 }
 
 export default ProjectDetails;
-
-
-// Project Details to include:
-// Project Title
-// Images
-// Project link -  Project Link: {project.projectLink}
-// Donate Button
-// themeName - need or longTermImpact - remaining 
-// Organisation:  

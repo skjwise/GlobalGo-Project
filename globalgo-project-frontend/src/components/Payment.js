@@ -32,11 +32,10 @@ const Payment = props => {
         }
       };
 
-
-
-
     return (
         <div>
+            <br/>
+            <br/>
             <CardElement />
             <button onClick={submit} >Submit </button>
         </div>

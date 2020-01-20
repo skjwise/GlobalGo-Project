@@ -35,7 +35,7 @@ const ProjectCard = ({project, user}) => {
             <Card.Header> Funding Raised: £ {project.funding} | Goal: £ {project.goal} </Card.Header>
             {/* numbers toFixed */}
             <br/>
-            <Card.Meta> Contry: {project.country} ({project.iso3166CountryCode}) </Card.Meta>
+            <Card.Meta> {project.country} ({project.iso3166CountryCode}) </Card.Meta>
             <br/>
             <Card.Description>
                 Summary: {project.summary}
