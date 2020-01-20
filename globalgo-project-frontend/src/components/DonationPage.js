@@ -1,5 +1,7 @@
 import React from 'react';
 // import {Form, Input} from 'semantic-ui-react';
+import {Elements} from 'react-stripe-elements';
+import Payment from './Payment';
 
 const DonationPage = () => {
 
@@ -10,6 +12,13 @@ const DonationPage = () => {
 
     return (
         <div id="Donation-Form" >
+
+        <Elements>
+            <Payment />
+        </Elements>
+
+
+
             <h3>Payment Information</h3>
             <form onSubmit={handleSubmit} >
                 <br/>

@@ -12,6 +12,9 @@ import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
 import Modal from "./components/Modal";
 import ThemeSearch from './components/ThemeSearch';
+import { StripeProvider } from 'react-stripe-elements';
+
+
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
 const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
@@ -79,6 +82,7 @@ function App() {
   }
 
   return (
+    <StripeProvider apiKey="pk_test_0IQtOJTDUqpqZSLQN0YhFDpL00WkixsQAl" >
     <div className="background">
       <Navbar user={user} onSuccess={handlelogout} />
       <Container style={{ align: "inline-block" }}>
@@ -125,6 +129,7 @@ function App() {
         </Router>
       </Container>
     </div>
+    </StripeProvider>
   );
 }
 
