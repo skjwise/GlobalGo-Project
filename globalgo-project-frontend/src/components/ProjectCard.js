@@ -27,10 +27,11 @@ const ProjectCard = ({project, user}) => {
 
     return (
         <div id="project-card">
-        <h2 id="project-title"> {project.title} </h2>    
+        {/* <h2 id="project-title"> {project.title} </h2>     */}
         <Card style={{ height: "350px", width: "600px", margin: "30px" }}>
-            <Image src={project.imageLink} wrapped ui={false} /> 
+            <Image src={project.imageLink} wrapped ui={true} size='small' /> 
             <Card.Content>
+            <Card.Header> {project.title} </Card.Header>
             <br/>
             <Card.Header> Funding Raised: £ {project.funding} | Goal: £ {project.goal} </Card.Header>
             {/* numbers toFixed */}

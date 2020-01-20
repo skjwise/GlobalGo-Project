@@ -37,6 +37,8 @@ const Payment = props => {
             <br/>
             <br/>
             <CardElement />
+            <br/>
+            <br/>
             <button onClick={submit} >Submit </button>
         </div>
     );

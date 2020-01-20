@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Input } from "semantic-ui-react";
+import { Menu, Input, Icon } from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
+
 
 export class Navbar extends Component {
   state = { activeItem: "home" };
@@ -18,7 +20,7 @@ export class Navbar extends Component {
           active={activeItem === "home"}
           onClick={this.handleItemClick}
         >
-        {/* <Icon name="home" color="purple" size="large" /> */}
+        <Icon name="home" color="green" size="large" />
         </Menu.Item>
         {this.props.user ? (
           <React.Fragment>

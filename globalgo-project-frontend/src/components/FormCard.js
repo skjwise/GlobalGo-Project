@@ -15,7 +15,7 @@ const FormCard = props => {
             width: "400px",
             padding: "10px",
             margin: "10px",
-            color: "darkviolet",
+            color: "green",
             textAlign: "center"
           }}
         >
@@ -33,7 +33,7 @@ const FormCard = props => {
           <Grid centered>
             <Form style={{ textAlign: "center", width: "85%" }}>
               <Form.Field style={{ textAlign: "center" }}>
-                <Label as="a" tag color="purple">
+                <Label as="a" tag color="green">
                   {" "}
                   Username: 
                 </Label>
@@ -46,7 +46,7 @@ const FormCard = props => {
               </Form.Field>
               <br/>
               <Form.Field>
-                <Label as="a" tag color="purple">
+                <Label as="a" tag color="green">
                   Password: 
                 </Label>
                 <input
@@ -59,7 +59,7 @@ const FormCard = props => {
               <br/>
               {props.signUp && (                
                 <Form.Field>
-                  <Label as="a" tag color="purple">
+                  <Label as="a" tag color="green">
                     Email: 
                   </Label>
                   <input
@@ -78,7 +78,7 @@ const FormCard = props => {
                 type="submit"
                 value="SignUp"
                 basic
-                color="purple"
+                color="green"
               >
                 {props.button}
               </Button>

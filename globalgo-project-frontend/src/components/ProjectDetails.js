@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Image} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 
 const ProjectDetails = ({project}) => {
 
@@ -22,13 +22,14 @@ const ProjectDetails = ({project}) => {
             <br/>
             <h4>Long Term Impact: {project.longTermImpact} </h4>
             <br/>
-            <h3>Remaining: {project.remaining} | Funding: {project.funding} | Goal: {project.goal} </h3>
+            <h3>Remaining: £ {project.remaining} | Funding: £ {project.funding} | Goal: £ {project.goal} </h3>
             <br/>
             <h4> Need: {project.need} </h4>
             <br/>
             <a href={project.projectLink} > Project Link </a>
             <br/>
-            <button onClick={() => handleClick()} > Make a Donation</button>
+            <br/>
+            <Button onClick={() => handleClick()} > Make a Donation</Button>
         </div>
     );
 }
