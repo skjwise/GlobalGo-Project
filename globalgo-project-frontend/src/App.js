@@ -10,15 +10,16 @@ import Home from "./components/Home";
 import AllProjects from "./components/AllProjects";
 import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
-import Modal from "./components/Modal"
+import Modal from "./components/Modal";
+import ThemeSearch from './components/ThemeSearch';
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-// const PROJECT_THEMES_URL = ''
-// const SEARCH_URL = 'https://api.globalgiving.org/api/public/services/search/projects?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
+const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
 
 function App() {
   const [user, setUser] = useState(null);
   const [projects, setAllProjects] = useState([]);
+  const [themes, setAllThemes] = useState([]);
   // const [project, setProject] = useState([]);
   // const [isModalOpen, setModal] = useState(false)
   const history = useHistory();
@@ -26,6 +27,7 @@ function App() {
 
   useEffect(() => {
     getProjects();
+    getThemes();
     API.validateUser()
       .then(user => setUser(user))
       .catch(console.error);
@@ -64,6 +66,18 @@ function App() {
   //   console.log('project details', project);
   // }
 
+  const getThemes = () => {
+    fetch(THEMES_URL, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(themes => setAllThemes(themes))
+  }
+
   return (
     <div className="background">
       <Navbar user={user} onSuccess={handlelogout} />
@@ -97,6 +111,11 @@ function App() {
               // project={project}
             /> 
           )}
+        />
+        <Route
+          exact
+          path="/themeSearch"
+          render={props => <ThemeSearch {...props} themes={themes} />}
         />
         <Route
           exact

@@ -1,7 +1,7 @@
 .App {
   text-align: left;
-  /* height: 100vh !important;
-  background-color: darkgrey; */
+  height: 100vh !important;
+  background-color: darkgrey;
 }
 
 #Home {
@@ -21,16 +21,19 @@
 
 #all-projects{
   text-align: center;
-
+  background-color: darkgrey;
 }
 #project-card{
-  background-color: rgb(167, 198, 245);
+  /* background-color: rgb(200, 217, 243); */
+  background-color: white;
   border: 3px solid #282c34;
   text-align: left;
   width: auto;
   margin: 20px;
   padding: 20px;
   overflow: scroll;
+  margin-top: 50px;
+  padding-top: 50px;
 }
 
 .Modal {
@@ -72,10 +75,12 @@
 }
 
 #Donation-Form{
-  background-color: rgb(155, 182, 240);
+  background-color: rgb(181, 198, 235);
   text-align: center;
   margin: 40px;
   border: 3px solid darkslategrey;
   height: 600px;
   width: 600px;
 }
+
+/* add formCard CSS */

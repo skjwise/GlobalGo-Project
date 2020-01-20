@@ -6,11 +6,7 @@ import ProjectCard from './ProjectCard';
 const AllProjects = ({projects, selectProject}) => {
 
     return (
-        <div>
-            {/* <div id="search">
-                <label>Search: </label>
-                <input type="text" name="search" placeholder="search by theme"></input>
-            </div> */}
+        <div id='all-projects'>
             <React.Fragment>
                 {projects !== undefined && projects.map(project => <ProjectCard key={project.id} project={project} selectProject={selectProject} />)}
             </React.Fragment>
