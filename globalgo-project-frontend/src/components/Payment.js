@@ -1,5 +1,6 @@
 import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
+import {Button} from 'semantic-ui-react';
 
 const Payment = props => {
     const submit = async event => {
@@ -16,21 +17,21 @@ const Payment = props => {
         //   props.setPaymentOk(true);
         // }
       };
-      const style = {
-        base: {
-          color: "#32325D",
-          fontFamily: '"Helvetica Neue”, Helvetica, sans-serif',
-          fontSmoothing: "antialiased",
-          fontSize: "16px",
-          "::placeholder": {
-            color: "#AAB7C4"
-          }
-        },
-        invalid: {
-          color: "#FA755A",
-          iconColor: "#FA755A"
-        }
-      };
+      // const style = {
+      //   base: {
+      //     color: "#32325D",
+      //     fontFamily: '"Helvetica Neue”, Helvetica, sans-serif',
+      //     fontSmoothing: "antialiased",
+      //     fontSize: "16px",
+      //     "::placeholder": {
+      //       color: "#AAB7C4"
+      //     }
+      //   },
+      //   invalid: {
+      //     color: "#FA755A",
+      //     iconColor: "#FA755A"
+      //   }
+      // };
 
     return (
         <div>
@@ -39,7 +40,7 @@ const Payment = props => {
             <CardElement />
             <br/>
             <br/>
-            <button onClick={submit} >Submit </button>
+            <Button  onClick={submit} >Submit </Button>
         </div>
     );
 }

@@ -26,7 +26,7 @@ const ProjectCard = ({project, user}) => {
     }
 
     const progressBar = () => {
-       return project.funding.toFixed(0) % project.goal.toFixed(0) 
+       return Math.floor(project.funding.toFixed(0) / project.goal.toFixed(0) * 100)
     }
 
 
