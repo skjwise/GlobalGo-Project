@@ -1,7 +1,7 @@
 .App {
   text-align: left;
   height: 100vh !important;
-  background-color: rgb(216, 213, 213);
+  /* background-color: rgb(216, 213, 213); */
 }
 
 #Home {
@@ -25,8 +25,8 @@
   margin: 20px;
   padding: 20px;
   overflow: scroll;
-  margin-top: 50px;
-  padding-top: 50px;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .Modal {

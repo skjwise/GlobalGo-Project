@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
-import { Card, Image, Button } from 'semantic-ui-react';
+import { Card, Image, Button, Progress } from 'semantic-ui-react';
 import ProjectDetails from './ProjectDetails';
 import Modal from './Modal'
 
@@ -14,29 +14,32 @@ const ProjectCard = ({project, user}) => {
         history.push("/donation");
     }
 
-    const handleDetailsClick = () => {
-        console.log(project.id)
-        history.push("/projectdetails");
-    }
+    // const handleDetailsClick = () => {
+    //     console.log(project.id)
+    //     history.push("/projectdetails");
+    // }
 
     const selectProject = project => {
         setProject(singleProject);
         setModal(true);
         console.log('project details', project);
-      }
+    }
+
+    const progressBar = () => {
+       return project.funding.toFixed(0) % project.goal.toFixed(0) 
+    }
+
 
     return (
         <div id="project-card">
-        {/* <h2 id="project-title"> {project.title} </h2>     */}
-        <Card style={{ height: "350px", width: "600px", margin: "30px" }}>
+        <Card style={{ height: "450px", width: "600px", margin: "30px" }}>
             <Image src={project.imageLink} wrapped ui={true} size='small' /> 
             <Card.Content>
             <Card.Header> {project.title} </Card.Header>
             <br/>
-            <Card.Header> Funding Raised: £ {project.funding} | Goal: £ {project.goal} </Card.Header>
-            {/* numbers toFixed */}
-            <br/>
-            <Card.Meta> {project.country} ({project.iso3166CountryCode}) </Card.Meta>
+            <Card.Header> Goal: £ {project.goal} </Card.Header>
+            <Progress color='green' size='small' progress percent={progressBar()} ></Progress>
+            <Card.Meta> {project.themeName} | {project.country} ({project.iso3166CountryCode}) </Card.Meta>
             <br/>
             <Card.Description>
                 Summary: {project.summary}

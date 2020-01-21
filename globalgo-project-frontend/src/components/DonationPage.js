@@ -8,6 +8,7 @@ const DonationPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log("thank you for the donation")
+        
     }
 
     return (

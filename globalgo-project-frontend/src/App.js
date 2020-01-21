@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import API from "./adapters/API";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
@@ -83,30 +83,26 @@ function App() {
     <div className="background">
       <Navbar user={user} onSuccess={handlelogout} />
       <Container style={{ align: "inline-block" }}>
-        <Router >
+        <Switch >
         <Route exact path="/" component={Home} />
         <Route exact path="/logout" component={Home} />
         <Route
-          exact
-          path="/signup"
+          exact path="/signup"
           render={props => <SignUp {...props} onSuccess={handleLogin} />}
         />
         <Route
-          exact
-          path="/login"
+          exact path="/login"
           render={props => <Login {...props} onSuccess={handleLogin} />}
         />
         <Route
-          exact
-          path="/allProjects"
+          exact path="/allProjects"
           render={props => (
             <AllProjects {...props} projects={projects.project} 
             // selectProject={selectProject} 
             /> )}
         />
         <Route
-          exact
-          path="/projectdetails"
+          exact path="/projectdetails"
           render={props => (
             <ProjectDetails {...props} 
               // project={project}
@@ -114,16 +110,14 @@ function App() {
           )}
         />
         <Route
-          exact
-          path="/allThemes"
+          exact path="/allThemes"
           render={props => <AllThemes {...props} themes={themes.theme} />}
         />
         <Route
-          exact
-          path="/donation"
+          exact path="/donation"
           render={props => <DonationPage {...props} />}
         />
-        </Router>
+        </Switch>
       </Container>
     </div>
     </StripeProvider>
