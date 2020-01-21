@@ -16,8 +16,8 @@ import AllThemes from './components/AllThemes';
 
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-
+// const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -75,7 +75,7 @@ function App() {
     })
     .then(r => r.json())
     .then(themes => setAllThemes(themes.themes))
-    .then(console.log(themes))
+    // .then(console.log(themes))
   }
 
   return (

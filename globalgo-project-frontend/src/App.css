@@ -69,9 +69,10 @@
 
 #Donation-Form{
   /* background-color: rgb(181, 198, 235); */
+  position: absolute;
   text-align: center;
-  margin: 40px;
-  border: 3px solid darkslategrey;
+  margin: 50px;
+  border: 3px solid rgb(207, 216, 216);
   height: 400px;
   width: 600px;
 }

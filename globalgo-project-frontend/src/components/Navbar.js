@@ -66,8 +66,8 @@ export class Navbar extends Component {
             name="theme search"
             as={NavLink}
             exact
-            to="/themeSearch"
-            active={activeItem === "themeSearch"}
+            to="/allThemes"
+            active={activeItem === "allThemes"}
             onClick={this.handleItemClick}
             />
           </Menu.Menu>

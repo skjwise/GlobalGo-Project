@@ -3,11 +3,12 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import {Button} from 'semantic-ui-react';
 
 const Payment = props => {
-    const submit = async event => {
-        // User email is either user.email from Auth0 OR from some guest email field
-        event.preventDefault();
+    const submit = async e => {
+        e.preventDefault();
+        // console.log("thank you for the donation")
+        // alert('Thank you for your donation!')
         let { token } = await props.stripe.createToken({ name: "Name" });
-        let body = { token: token.id };
+        let body = { token: token.id, amount: props.amount };
         let response = await fetch("http://localhost:3000/api/v1/charge", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -17,21 +18,6 @@ const Payment = props => {
         //   props.setPaymentOk(true);
         // }
       };
-      // const style = {
-      //   base: {
-      //     color: "#32325D",
-      //     fontFamily: '"Helvetica Neue”, Helvetica, sans-serif',
-      //     fontSmoothing: "antialiased",
-      //     fontSize: "16px",
-      //     "::placeholder": {
-      //       color: "#AAB7C4"
-      //     }
-      //   },
-      //   invalid: {
-      //     color: "#FA755A",
-      //     iconColor: "#FA755A"
-      //   }
-      // };
 
     return (
         <div>
@@ -40,7 +26,7 @@ const Payment = props => {
             <CardElement />
             <br/>
             <br/>
-            <Button  onClick={submit} >Submit </Button>
+            <Button onClick={submit} > Submit </Button>
         </div>
     );
 }
