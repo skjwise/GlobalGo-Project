@@ -32,7 +32,7 @@ const ProjectCard = ({project, user}) => {
 
     return (
         <div id="project-card">
-        <Card style={{ height: "550px", width: "600px", margin: "20px" }}>
+        <Card style={{ height: "550px", width: "950px", margin: "10px" }}>
             <Image src={project.imageLink} wrapped ui={true} size='medium' /> 
             <Card.Content>
             <Card.Header> {project.title} </Card.Header>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Input, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -70,7 +70,7 @@ export class Navbar extends Component {
             active={activeItem === "education"}
             onClick={this.handleItemClick}
             />
-            {/* <Menu.Item
+            <Menu.Item
             name="Health Projects"
             as={NavLink}
             exact
@@ -78,7 +78,7 @@ export class Navbar extends Component {
             active={activeItem === "health"}
             onClick={this.handleItemClick}
             />
-            <Menu.Item
+            {/* <Menu.Item
             name="Environment"
             as={NavLink}
             exact
