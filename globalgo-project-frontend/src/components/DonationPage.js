@@ -3,14 +3,8 @@ import {Input, Label} from 'semantic-ui-react';
 import {Elements} from 'react-stripe-elements';
 import Payment from './Payment';
 
-const DonationPage = () => {
+const DonationPage = ({project}) => {
     const [amount, setAmount] = useState(0);
-
-
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     console.log("thank you for the donation"
-    // }
 
     const handleAmount = e => {
         const donation = e.target.value * 100
@@ -22,6 +16,7 @@ const DonationPage = () => {
             <br/>
             <h3>Payment Information</h3>
             <br/>
+            {/* <h3>Donating to:  </h3> */}
             <br/>
             <Input labelPosition='right' type='text' placeholder='Amount'>
             <Label basic>£</Label>

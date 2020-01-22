@@ -12,25 +12,30 @@ import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
 import Modal from "./components/Modal";
 import { StripeProvider } from 'react-stripe-elements';
-import AllThemes from './components/AllThemes';
+import Education from './components/Education';
 
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
 // const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c'
+const EDU_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+const HEALTH_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+const ENV_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 
 function App() {
   const [user, setUser] = useState(null);
   const [projects, setAllProjects] = useState([]);
-  const [themes, setAllThemes] = useState([]);
+  const [educationProjects, setThemeProjects] = useState([]);
+  const [healthProjects, setHealthProjects] = useState([]);
+  const [environmentProjects, setEnvironmentProjects] = useState([]);
   // const [project, setProject] = useState([]);
   // const [isModalOpen, setModal] = useState(false)
   const history = useHistory();
 
-
   useEffect(() => {
     getProjects();
-    getThemes();
+    getEducation();
+    getHealth();
+    getEnvironemnt();
     API.validateUser()
       .then(user => setUser(user))
       .catch(console.error);
@@ -65,8 +70,8 @@ function App() {
   //   console.log('project details', project);
   // }
 
-  const getThemes = () => {
-    fetch(THEMES_URL, {
+  const getEducation = () => {
+    fetch(EDU_URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -74,8 +79,32 @@ function App() {
       }
     })
     .then(r => r.json())
-    .then(themes => setAllThemes(themes.themes))
-    // .then(console.log(themes))
+    .then(educationProjects => setThemeProjects(educationProjects.projects))
+    .then(console.log(educationProjects.projects))
+  }
+
+  const getHealth = () => {
+    fetch(HEALTH_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(healthProjects => setHealthProjects(healthProjects.projects))
+  }
+
+  const getEnvironemnt = () => {
+    fetch(ENV_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
   }
 
   return (
@@ -110,8 +139,16 @@ function App() {
           )}
         />
         <Route
-          exact path="/allThemes"
-          render={props => <AllThemes {...props} themes={themes.theme} />}
+          exact path="/education"
+          render={props => <Education {...props} educationProjects={educationProjects.project} />}
+        />
+        <Route
+          exact path="/health"
+          render={props => <Education {...props} educationProjects={educationProjects.project} />}
+        />
+        <Route
+          exact path="/environment"
+          render={props => <Education {...props} educationProjects={educationProjects.project} />}
         />
         <Route
           exact path="/donation"

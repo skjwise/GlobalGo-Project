@@ -63,11 +63,27 @@ export class Navbar extends Component {
         )}
         <Menu.Menu position='right'>
             <Menu.Item
-            name="theme search"
+            name="Education"
             as={NavLink}
             exact
-            to="/allThemes"
-            active={activeItem === "allThemes"}
+            to="/education"
+            active={activeItem === "education"}
+            onClick={this.handleItemClick}
+            />
+            <Menu.Item
+            name="Health"
+            as={NavLink}
+            exact
+            to="/health"
+            active={activeItem === "health"}
+            onClick={this.handleItemClick}
+            />
+            <Menu.Item
+            name="Environment"
+            as={NavLink}
+            exact
+            to="/environment"
+            active={activeItem === "environment"}
             onClick={this.handleItemClick}
             />
           </Menu.Menu>

@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
 import { Card, Image, Button, Progress } from 'semantic-ui-react';
-import ProjectDetails from './ProjectDetails';
-import Modal from './Modal'
 
-const ProjectCard = ({project, user}) => {
-    const [singleProject, setProject] = useState([]);
-    const [isModalOpen, setModal] = useState(false)  
+const EducationProjectCard = ({project}) => {
     const history = useHistory();
 
     const handleDonateClick = () => {
@@ -14,24 +10,18 @@ const ProjectCard = ({project, user}) => {
         history.push("/donation");
     }
 
-    // const handleDetailsClick = () => {
-    //     console.log(project.id)
-    //     history.push("/projectdetails");
+    // const selectProject = project => {
+    //     setProject(singleProject);
+    //     setModal(true);
+    //     console.log('project details', project);
     // }
-
-    const selectProject = project => {
-        setProject(singleProject);
-        setModal(true);
-        console.log('project details', project);
-    }
 
     const progressBar = () => {
        return Math.floor(project.funding.toFixed(0) / project.goal.toFixed(0) * 100)
     }
 
-
     return (
-        <div id="project-card">
+        <div id="education">
         <Card style={{ height: "550px", width: "600px", margin: "20px" }}>
             <Image src={project.imageLink} wrapped ui={true} size='medium' /> 
             <Card.Content>
@@ -46,20 +36,12 @@ const ProjectCard = ({project, user}) => {
             </Card.Description>
             <br/>
             <Button onClick={() => handleDonateClick()} > Donate </Button>
-            <Button onClick={() => selectProject(project)} > More Details</Button>
+            {/* <Button onClick={() => selectProject(project)} > More Details</Button> */}
             </Card.Content>
         </Card>
-        {isModalOpen && (
-            <Modal closeModal={() => setModal(false)}>
-                <ProjectDetails
-                    project={project}
-                    user={user}
-                    closeModalOnSave={() => setModal(false)}
-                />
-            </Modal>
-        )}
+            
         </div>
     );
 }
 
-export default ProjectCard;
+export default EducationProjectCard;
