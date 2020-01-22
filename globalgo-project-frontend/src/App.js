@@ -10,9 +10,10 @@ import Home from "./components/Home";
 import AllProjects from "./components/AllProjects";
 import ProjectDetails from './components/ProjectDetails'
 import "./App.css";
-import Modal from "./components/Modal";
+// import Modal from "./components/Modal";
 import { StripeProvider } from 'react-stripe-elements';
 import Education from './components/Education';
+import Health from './components/Health';
 
 
 const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
@@ -80,7 +81,7 @@ function App() {
     })
     .then(r => r.json())
     .then(educationProjects => setThemeProjects(educationProjects.projects))
-    .then(console.log(educationProjects.projects))
+    // .then(console.log(educationProjects.projects))
   }
 
   const getHealth = () => {
@@ -93,6 +94,7 @@ function App() {
     })
     .then(r => r.json())
     .then(healthProjects => setHealthProjects(healthProjects.projects))
+    .then(console.log(healthProjects.projects))
   }
 
   const getEnvironemnt = () => {
@@ -105,6 +107,7 @@ function App() {
     })
     .then(r => r.json())
     .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
+    .then(console.log(environmentProjects.project))
   }
 
   return (
@@ -144,7 +147,7 @@ function App() {
         />
         <Route
           exact path="/health"
-          render={props => <Education {...props} educationProjects={educationProjects.project} />}
+          render={props => <Health {...props} healthProjects={healthProjects.project} />}
         />
         <Route
           exact path="/environment"
