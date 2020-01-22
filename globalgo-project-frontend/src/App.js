@@ -15,19 +15,18 @@ import { StripeProvider } from 'react-stripe-elements';
 import Education from './components/Education';
 import Health from './components/Health';
 
-
-const PROJECTS_URL = 'https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
+const PROJECTS_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
 // const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-const EDU_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-const HEALTH_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-const ENV_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+const EDU_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+// const HEALTH_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+// const ENV_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 
 function App() {
   const [user, setUser] = useState(null);
   const [projects, setAllProjects] = useState([]);
   const [educationProjects, setThemeProjects] = useState([]);
-  const [healthProjects, setHealthProjects] = useState([]);
-  const [environmentProjects, setEnvironmentProjects] = useState([]);
+  // const [healthProjects, setHealthProjects] = useState([]);
+  // const [environmentProjects, setEnvironmentProjects] = useState([]);
   // const [project, setProject] = useState([]);
   // const [isModalOpen, setModal] = useState(false)
   const history = useHistory();
@@ -35,8 +34,8 @@ function App() {
   useEffect(() => {
     getProjects();
     getEducation();
-    getHealth();
-    getEnvironemnt();
+    // getHealth();
+    // getEnvironemnt();
     API.validateUser()
       .then(user => setUser(user))
       .catch(console.error);
@@ -84,31 +83,31 @@ function App() {
     // .then(console.log(educationProjects.projects))
   }
 
-  const getHealth = () => {
-    fetch(HEALTH_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    .then(r => r.json())
-    .then(healthProjects => setHealthProjects(healthProjects.projects))
-    .then(console.log(healthProjects.projects))
-  }
+  // const getHealth = () => {
+  //   fetch(HEALTH_URL, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     }
+  //   })
+  //   .then(r => r.json())
+  //   .then(healthProjects => setHealthProjects(healthProjects.projects))
+  //   .then(console.log(healthProjects.projects))
+  // }
 
-  const getEnvironemnt = () => {
-    fetch(ENV_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    .then(r => r.json())
-    .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
-    .then(console.log(environmentProjects.project))
-  }
+  // const getEnvironemnt = () => {
+  //   fetch(ENV_URL, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     }
+  //   })
+  //   .then(r => r.json())
+  //   .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
+  //   .then(console.log(environmentProjects.project))
+  // }
 
   return (
     <StripeProvider apiKey="pk_test_0IQtOJTDUqpqZSLQN0YhFDpL00WkixsQAl" >
@@ -145,14 +144,14 @@ function App() {
           exact path="/education"
           render={props => <Education {...props} educationProjects={educationProjects.project} />}
         />
-        <Route
+        {/* <Route
           exact path="/health"
           render={props => <Health {...props} healthProjects={healthProjects.project} />}
-        />
-        <Route
+        /> */}
+        {/* <Route
           exact path="/environment"
           render={props => <Education {...props} educationProjects={educationProjects.project} />}
-        />
+        /> */}
         <Route
           exact path="/donation"
           render={props => <DonationPage {...props} />}
