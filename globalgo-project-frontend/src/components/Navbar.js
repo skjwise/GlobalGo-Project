@@ -63,7 +63,7 @@ export class Navbar extends Component {
         )}
         <Menu.Menu position='right'>
             <Menu.Item
-            name="Education Projects"
+            name="Education"
             as={NavLink}
             exact
             to="/education"
@@ -71,7 +71,7 @@ export class Navbar extends Component {
             onClick={this.handleItemClick}
             />
             <Menu.Item
-            name="Health Projects"
+            name="Health"
             as={NavLink}
             exact
             to="/health"
@@ -84,6 +84,14 @@ export class Navbar extends Component {
             exact
             to="/environment"
             active={activeItem === "environment"}
+            onClick={this.handleItemClick}
+            />
+            <Menu.Item
+            name="Animals"
+            as={NavLink}
+            exact
+            to="/animals"
+            active={activeItem === "animals"}
             onClick={this.handleItemClick}
             />
           </Menu.Menu>

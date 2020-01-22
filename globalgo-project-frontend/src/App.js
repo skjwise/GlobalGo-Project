@@ -15,6 +15,7 @@ import { StripeProvider } from 'react-stripe-elements';
 import Education from './components/Education';
 import Health from './components/Health';
 import Environment from './components/Environment';
+import Animal from "./components/Animal";
 
 // &nextProjectId=354
 const PROJECTS_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
@@ -22,7 +23,7 @@ const EDU_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.or
 const HEALTH_URL = "https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c";
 const ENV_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 // const HUNGER_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/hunger/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-
+const ANIMAL_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/animals/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ function App() {
   const [educationProjects, setThemeProjects] = useState([]);
   const [healthProjects, setHealthProjects] = useState([]);
   const [environmentProjects, setEnvironmentProjects] = useState([]);
+  const [animalProjects, setAnimalProjects] = useState([]);
   // const [project, setProject] = useState([]);
   // const [isModalOpen, setModal] = useState(false)
   const history = useHistory();
@@ -39,6 +41,7 @@ function App() {
     getEducation();
     getHealth();
     getEnvironemnt();
+    getAnimals();
     API.validateUser()
       .then(user => setUser(user))
       .catch(console.error);
@@ -90,7 +93,6 @@ function App() {
     })
     .then(r => r.json())
     .then(healthProjects => setHealthProjects(healthProjects.projects))
-    // .then(console.log(healthProjects.projects))
   }
 
   const getEnvironemnt = () => {
@@ -103,7 +105,17 @@ function App() {
     })
     .then(r => r.json())
     .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
-    // .then(console.log(environmentProjects.project))
+  }
+  const getAnimals = () => {
+    fetch(ANIMAL_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    })
+    .then(r => r.json())
+    .then(animalProjects => setAnimalProjects(animalProjects.projects))
   }
   
 
@@ -149,6 +161,10 @@ function App() {
         <Route
           exact path="/environment"
           render={props => <Environment {...props} environmentProjects={environmentProjects.project} />}
+        />
+        <Route
+          exact path="/animals"
+          render={props => <Animal {...props} animalProjects={animalProjects.project} />}
         />
         <Route
           exact path="/donation"
