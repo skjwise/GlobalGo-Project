@@ -78,14 +78,14 @@ export class Navbar extends Component {
             active={activeItem === "health"}
             onClick={this.handleItemClick}
             />
-            {/* <Menu.Item
+            <Menu.Item
             name="Environment"
             as={NavLink}
             exact
             to="/environment"
             active={activeItem === "environment"}
             onClick={this.handleItemClick}
-            /> */}
+            />
           </Menu.Menu>
       </Menu>
     );

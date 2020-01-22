@@ -5,12 +5,10 @@ import Modal from './Modal'
 import ProjectDetails from './ProjectDetails'
 
 
-const HealthProjectCard = ({project, user}) => {
+const EnvironmentProjectCard = ({project, user}) => {
     const history = useHistory();
     const [isModalOpen, setModal] = useState(false)  
     const [singleProject, setProject] = useState([]);
-
-
 
     const handleDonateClick = () => {
         console.log(project)
@@ -28,7 +26,7 @@ const HealthProjectCard = ({project, user}) => {
     }
 
     return (
-        <div id="health">
+        <div id="environment">
         <Card style={{ height: "550px", width: "950px", margin: "10px" }}>
             <Image src={project.imageLink} wrapped ui={true} size='medium' /> 
             <Card.Content>
@@ -59,4 +57,4 @@ const HealthProjectCard = ({project, user}) => {
     );
 }
 
-export default HealthProjectCard;
+export default EnvironmentProjectCard;
