@@ -25,7 +25,7 @@ export class Navbar extends Component {
         {this.props.user ? (
           <React.Fragment>
             <Menu.Item
-              name="Projects"
+              name="Browse Projects"
               as={NavLink}
               exact
               to="/allProjects"
@@ -63,15 +63,15 @@ export class Navbar extends Component {
         )}
         <Menu.Menu position='right'>
             <Menu.Item
-            name="Education"
+            name="Education Projects"
             as={NavLink}
             exact
             to="/education"
             active={activeItem === "education"}
             onClick={this.handleItemClick}
             />
-            <Menu.Item
-            name="Health"
+            {/* <Menu.Item
+            name="Health Projects"
             as={NavLink}
             exact
             to="/health"
@@ -85,7 +85,7 @@ export class Navbar extends Component {
             to="/environment"
             active={activeItem === "environment"}
             onClick={this.handleItemClick}
-            />
+            /> */}
           </Menu.Menu>
       </Menu>
     );

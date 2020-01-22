@@ -1,21 +1,15 @@
 import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
-import {Button, Message} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
+import {useAlert} from 'react-alert';
 
 const Payment = props => {
   const history = useHistory();
+  const alert = useAlert();
 
-  // const successMessage = () => {
-  //     <Message
-  //     success
-  //     header='Your payment was successful'
-  //     content='Thank you for your donation!'
-  //   />
-  // }
     const submit = async e => {
         e.preventDefault();
-        // console.log("thank you for the donation")
         let { token } = await props.stripe.createToken({ name: "Name" });
         let body = { token: token.id, amount: props.amount };
         let response = await fetch("http://localhost:3000/api/v1/charge", {
@@ -24,10 +18,10 @@ const Payment = props => {
           body: JSON.stringify(body)
         });
         if (response.ok) {
-        //  <Message floating content='Thank you for your donation!' />
+          alert.success("Thank you for your donation!");
           history.push("/");
-          alert('Thank you for your donation!')
         } else {
+          alert.error('Please fill in Amount and Card Details.')
           console.error();
         }
       };
@@ -40,6 +34,7 @@ const Payment = props => {
             <br/>
             <br/>
             <Button onClick={submit} > Submit </Button>
+
         </div>
     );
 }

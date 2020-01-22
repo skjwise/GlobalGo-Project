@@ -13,13 +13,12 @@ import "./App.css";
 // import Modal from "./components/Modal";
 import { StripeProvider } from 'react-stripe-elements';
 import Education from './components/Education';
-import Health from './components/Health';
 
-const PROJECTS_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c&nextProjectId=354';
-// const THEMES_URL = 'https://api.globalgiving.org/api/public/projectservice/themes?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+// &nextProjectId=354
+const PROJECTS_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/all/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 const EDU_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/edu/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-// const HEALTH_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
-// const ENV_URL = 'https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
+// const HEALTH_URL = "https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/health/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c";
+// const ENV_URL = 'https://cors-anywhere.herokuapp.com/https://api.globalgiving.org/api/public/projectservice/themes/env/projects/active?api_key=81e83abd-34c8-4ce8-8282-bce16c0fc71c';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -64,12 +63,6 @@ function App() {
     .then(projects => setAllProjects(projects.projects))
   }
 
-  // const selectProject = project => {
-  //   setProject(project);
-  //   setModal(true)
-  //   console.log('project details', project);
-  // }
-
   const getEducation = () => {
     fetch(EDU_URL, {
       method: "GET",
@@ -93,7 +86,7 @@ function App() {
   //   })
   //   .then(r => r.json())
   //   .then(healthProjects => setHealthProjects(healthProjects.projects))
-  //   .then(console.log(healthProjects.projects))
+  //   // .then(console.log(healthProjects.projects))
   // }
 
   // const getEnvironemnt = () => {
@@ -108,6 +101,7 @@ function App() {
   //   .then(environmentProjects => setEnvironmentProjects(environmentProjects.projects))
   //   .then(console.log(environmentProjects.project))
   // }
+  
 
   return (
     <StripeProvider apiKey="pk_test_0IQtOJTDUqpqZSLQN0YhFDpL00WkixsQAl" >

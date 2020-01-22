@@ -6,8 +6,9 @@ const ProjectDetails = ({project}) => {
     const history = useHistory();
 
 
-    const handleClick = () =>{
+    const handleClick = () => {
         console.log('project details', project)
+        
         history.push("/donation");
     }
 
@@ -28,10 +29,10 @@ const ProjectDetails = ({project}) => {
             <br/>
             <h4> Need: {project.need} </h4>
             <br/>
-            <a href={project.projectLink} > Project Link </a>
+            <a href={project.projectLink}  target="_blank"> Project Link </a>
             <br/>
             <br/>
-            <Button onClick={() => handleClick()} > Make a Donation</Button>
+            <Button key={project.id} onClick={() => handleClick()} > Make a Donation</Button>
         </div>
     );
 }
