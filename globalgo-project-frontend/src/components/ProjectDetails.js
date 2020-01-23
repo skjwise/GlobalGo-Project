@@ -25,7 +25,7 @@ const ProjectDetails = ({project}) => {
             <br/>
             <h4>Long Term Impact: {project.longTermImpact} </h4>
             <br/>
-            <h3> £ {project.funding.toFixed(0)} raised of £ {project.goal} goal </h3>
+            <h3> £ {project.funding.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} raised of £ {project.goal.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} goal </h3>
             <br/>
             <h4> Need: {project.need} </h4>
             <br/>

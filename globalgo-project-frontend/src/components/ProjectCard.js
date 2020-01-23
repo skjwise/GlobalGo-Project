@@ -37,7 +37,7 @@ const ProjectCard = ({project, user}) => {
             <Card.Content>
             <Card.Header> {project.title} </Card.Header>
             <br/>
-            <Card.Header> Goal: £ {project.goal} </Card.Header>
+            <Card.Header> Goal: £ {project.goal.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} </Card.Header>
             <Progress color='green' size='small' progress percent={progressBar()} ></Progress>
             <Card.Meta> {project.themeName} | {project.country} ({project.iso3166CountryCode}) </Card.Meta>
             <br/>
