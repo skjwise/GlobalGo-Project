@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon, Dropdown } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -40,7 +40,16 @@ export class Navbar extends Component {
               active={activeItem === "logout"}
               onClick={() => this.props.onSuccess()}
             />
+            <Menu.Item>
+            <Dropdown text='More Categories' >
+            <Dropdown.Item text='Education'/>
+            <Dropdown.Item text='Health'/>
+            <Dropdown.Item text='Environment'/>
+            <Dropdown.Item text='Animals'/>
+            </Dropdown>
+            </Menu.Item>
           </React.Fragment>
+          
         ) : (
           <React.Fragment>
             <Menu.Item
