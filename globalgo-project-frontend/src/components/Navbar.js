@@ -25,13 +25,86 @@ export class Navbar extends Component {
         {this.props.user ? (
           <React.Fragment>
             <Menu.Item
-              name="Browse Projects"
+              name="Projects"
               as={NavLink}
               exact
               to="/allProjects"
               active={activeItem === "allProjects"}
               onClick={this.handleItemClick}
             />
+            <Menu.Item>
+            <Dropdown text='Categories' >
+              <Dropdown.Menu>
+                <Dropdown.Item text='Education' 
+                  name="Education"
+                  as={NavLink}
+                  exact
+                  to="/education"
+                  active={activeItem === "education"}
+                  onClick={this.handleItemClick}
+                />
+                <Dropdown.Divider />
+                <Dropdown.Item text='Health'
+                  name="Health"
+                  as={NavLink}
+                  exact
+                  to="/health"
+                  active={activeItem === "health"}
+                  onClick={this.handleItemClick}
+                />
+                <Dropdown.Divider />
+                <Dropdown.Item text='Environment'
+                  name="Environment"
+                  as={NavLink}
+                  exact
+                  to="/environment"
+                  active={activeItem === "environment"}
+                  onClick={this.handleItemClick}
+                />
+                <Dropdown.Divider />
+                <Dropdown.Item text='Animals'
+                  name="Animals"
+                  as={NavLink}
+                  exact
+                  to="/animals"
+                  active={activeItem === "animals"}
+                  onClick={this.handleItemClick}
+                />
+              </Dropdown.Menu>
+            </Dropdown>
+            </Menu.Item>
+            {/* <Menu.Item
+            name="Education"
+            as={NavLink}
+            exact
+            to="/education"
+            active={activeItem === "education"}
+            onClick={this.handleItemClick}
+            /> */}
+            {/* <Menu.Item
+            name="Health"
+            as={NavLink}
+            exact
+            to="/health"
+            active={activeItem === "health"}
+            onClick={this.handleItemClick}
+            /> */}
+            {/* <Menu.Item
+            name="Environment"
+            as={NavLink}
+            exact
+            to="/environment"
+            active={activeItem === "environment"}
+            onClick={this.handleItemClick}
+            /> */}
+            {/* <Menu.Item
+            name="Animals"
+            as={NavLink}
+            exact
+            to="/animals"
+            active={activeItem === "animals"}
+            onClick={this.handleItemClick}
+            /> */}
             <Menu.Item
               name="logout"
               as={NavLink}
@@ -40,14 +113,6 @@ export class Navbar extends Component {
               active={activeItem === "logout"}
               onClick={() => this.props.onSuccess()}
             />
-            <Menu.Item>
-            <Dropdown text='More Categories' >
-            <Dropdown.Item text='Education'/>
-            <Dropdown.Item text='Health'/>
-            <Dropdown.Item text='Environment'/>
-            <Dropdown.Item text='Animals'/>
-            </Dropdown>
-            </Menu.Item>
           </React.Fragment>
           
         ) : (
@@ -70,40 +135,40 @@ export class Navbar extends Component {
             />{" "}
           </React.Fragment>
         )}
-        <Menu.Menu position='right'>
-            <Menu.Item
+        {/* <Menu.Menu position='right'> */}
+            {/* <Menu.Item
             name="Education"
             as={NavLink}
             exact
             to="/education"
             active={activeItem === "education"}
             onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            /> */}
+            {/* <Menu.Item
             name="Health"
             as={NavLink}
             exact
             to="/health"
             active={activeItem === "health"}
             onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            /> */}
+            {/* <Menu.Item
             name="Environment"
             as={NavLink}
             exact
             to="/environment"
             active={activeItem === "environment"}
             onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            /> */}
+            {/* <Menu.Item
             name="Animals"
             as={NavLink}
             exact
             to="/animals"
             active={activeItem === "animals"}
             onClick={this.handleItemClick}
-            />
-          </Menu.Menu>
+            /> */}
+          {/* </Menu.Menu> */}
       </Menu>
     );
   }
