@@ -1,13 +1,16 @@
 # GlobalGo-Project
 Mod 5 Project
 
+- using data from GlobalGiving - https://www.globalgiving.org/
+
+- using photos from Unsplashed - https://unsplash.com/
+
+
 Project Overview:
 - An interactive website where users can explore and donate to nonprofit projects from around the world.
 
-- Users create a profile where they can specify their top-3 themes (Education, Children, Environment etc) and a default country.
+- Users can view projects based on the wellbeing of Animals, Education, Health and Environment.
 
-- The map page is where a world map is displayed where the users can hover and discover how many available projects they can donate to in every country.
-
-- They can also filter by any of the project themes to visualize which countries have the highest concentration of projects.
-
-- The user can click on a country to view summaries of all the projects and can favourite individual projects or donate to them.
+Front End Technologies Used:
+- React - User Interface
+- Semantic UI React - Theme + Style
