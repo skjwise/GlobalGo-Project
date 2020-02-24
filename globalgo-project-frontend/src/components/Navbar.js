@@ -73,38 +73,6 @@ export class Navbar extends Component {
               </Dropdown.Menu>
             </Dropdown>
             </Menu.Item>
-            {/* <Menu.Item
-            name="Education"
-            as={NavLink}
-            exact
-            to="/education"
-            active={activeItem === "education"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Health"
-            as={NavLink}
-            exact
-            to="/health"
-            active={activeItem === "health"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Environment"
-            as={NavLink}
-            exact
-            to="/environment"
-            active={activeItem === "environment"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Animals"
-            as={NavLink}
-            exact
-            to="/animals"
-            active={activeItem === "animals"}
-            onClick={this.handleItemClick}
-            /> */}
             <Menu.Item
               name="logout"
               as={NavLink}
@@ -114,7 +82,6 @@ export class Navbar extends Component {
               onClick={() => this.props.onSuccess()}
             />
           </React.Fragment>
-          
         ) : (
           <React.Fragment>
             <Menu.Item
@@ -135,40 +102,6 @@ export class Navbar extends Component {
             />{" "}
           </React.Fragment>
         )}
-        {/* <Menu.Menu position='right'> */}
-            {/* <Menu.Item
-            name="Education"
-            as={NavLink}
-            exact
-            to="/education"
-            active={activeItem === "education"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Health"
-            as={NavLink}
-            exact
-            to="/health"
-            active={activeItem === "health"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Environment"
-            as={NavLink}
-            exact
-            to="/environment"
-            active={activeItem === "environment"}
-            onClick={this.handleItemClick}
-            /> */}
-            {/* <Menu.Item
-            name="Animals"
-            as={NavLink}
-            exact
-            to="/animals"
-            active={activeItem === "animals"}
-            onClick={this.handleItemClick}
-            /> */}
-          {/* </Menu.Menu> */}
       </Menu>
     );
   }
