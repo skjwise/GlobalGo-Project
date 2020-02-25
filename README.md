@@ -12,7 +12,7 @@ Project Overview:
 - Users can view projects based on the wellbeing of Animals, Education, Health and Environment.
 
 Home Page Screenshot:
-![](/public/GlobalGo-HomePage.png)
+![ScreenShot](/globalgo-project-frontend/public/GlobalGo-HomePage.png)
 
 Front End Technologies Used:
 - React - User Interface
